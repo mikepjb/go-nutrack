@@ -22,3 +22,20 @@ func TestCalculatesTheCostOfPorridge(t *testing.T) {
 			porridgeWithBlueberries.Price())
 	}
 }
+
+// given a list of meals:
+//   - return a list of ingredients required
+//   - total cost
+//   - total nutrition (energy kcal, protein, carbs, fat)
+func TestWeeklyOrder(t *testing.T) {
+	oats := Ingredient{"oats", 0.7}
+	blueberries := Ingredient{"blueberries", 0.2}
+
+	porridgeWithBlueberries := Recipe{[]Ingredient{oats, blueberries}}
+
+	order := Order{[]Recipe{porridgeWithBlueberries, porridgeWithBlueberries}}
+
+	if order.Price() != 1.8 {
+		t.Errorf("wrong total for order: %v\n", order.Price())
+	}
+}

@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"io/ioutil"
+	"os"
+	"strings"
+)
 
 type Recipe struct {
 	ingredients []Ingredient
@@ -15,8 +19,9 @@ func (r Recipe) Price() float32 {
 }
 
 type Ingredient struct {
-	name  string
-	price float32 // price per 100g
+	name   string
+	amount int     // amount in grams
+	price  float32 // price per 100g
 }
 
 func (i Ingredient) Price() float32 {
@@ -35,6 +40,32 @@ func (o Order) Price() float32 {
 	return price
 }
 
+func (o Order) Ingredients() map[string]int {
+	ingredients := map[string]int{}
+	for _, r := range o.recipes {
+		for _, i := range r.ingredients {
+			ingredients[i.name] += i.amount
+		}
+	}
+	return ingredients
+}
+
+// bad name.
+func readData(path string) ([]Order, []Recipe, []Ingredient) {
+	orders := []Order{}
+	recipe := []Ingredient{}
+	ingredients := []Recipe{}
+
+	dfile := ioutil.ReadFile(path)
+
+}
+
 func main() {
-	fmt.Println("hello")
+	jsonPath := strings.Join(os.Args[1:], "")
+
+	orders := []Order{}
+	recipe := []Ingredient{}
+	ingredients := []Recipe{}
+
+	readData(jsonPath, orders, recipe, ingredients)
 }

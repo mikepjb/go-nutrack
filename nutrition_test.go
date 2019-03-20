@@ -53,3 +53,21 @@ func TestWeeklyOrder(t *testing.T) {
 			order.Ingredients())
 	}
 }
+
+// nutrition should be able to read information about orders, recipes and
+// ingredients from a JSON file.
+func TestReadData(t *testing.T) {
+	orders, recipes, ingredients := readData("nutrient-plan.json")
+
+	if len(orders) != 1 {
+		t.Errorf("wrong number of orders: %v\n", len(orders))
+	}
+
+	if len(recipes) != 1 {
+		t.Errorf("wrong number of recipes: %v\n", len(recipes))
+	}
+
+	if len(ingredients) != 1 {
+		t.Errorf("wrong number of ingredients: %v\n", len(ingredients))
+	}
+}

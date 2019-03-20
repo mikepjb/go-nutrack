@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -50,22 +52,41 @@ func (o Order) Ingredients() map[string]int {
 	return ingredients
 }
 
+// NutrientPlan is a collection of information about food and drink that you are
+// consuming. Orders are the recipes you plan to cook in a given time frame
+// (default 2 weeks), Recipes are the combination of Ingredients into a
+// consumable. Ingredients are the raw materials used.
+type NutrientPlan struct {
+	Orders      []Order      `json:"orders"`
+	Recipes     []Recipe     `json:"recipes"`
+	Ingredients []Ingredient `json:"ingredients"`
+}
+
 // bad name.
 func readData(path string) ([]Order, []Recipe, []Ingredient) {
-	orders := []Order{}
-	recipe := []Ingredient{}
-	ingredients := []Recipe{}
+	// orders := []Order{}
+	// recipes := []Recipe{}
+	// ingredients := []Ingredient{}
 
-	dfile := ioutil.ReadFile(path)
+	dfile, err := ioutil.ReadFile(path)
+	if err != nil {
+		fmt.Printf("could not read file from path: %v\n", err)
+	}
+
+	var nutrientPlan NutrientPlan
+	err = json.Unmarshal(dfile, &nutrientPlan)
+	if err != nil {
+		fmt.Printf("could not read file from path: %v\n", err)
+	}
+
+	// return orders, recipes, ingredients
+	return nutrientPlan.Orders, nutrientPlan.Recipes, nutrientPlan.Ingredients
 
 }
 
 func main() {
 	jsonPath := strings.Join(os.Args[1:], "")
+	orders, recipes, ingredients := readData(jsonPath)
 
-	orders := []Order{}
-	recipe := []Ingredient{}
-	ingredients := []Recipe{}
-
-	readData(jsonPath, orders, recipe, ingredients)
+	fmt.Println(orders, recipes, ingredients)
 }

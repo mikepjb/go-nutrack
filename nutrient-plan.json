@@ -1,0 +1,14 @@
+{"orders": [
+  {"name": "weekly shop",
+    "recipes": [
+      "porridge"
+    ]
+  }
+],
+"recipes": [
+  {"name": "porridge"}
+],
+"ingredients": [
+  {"name": "steel cut oats"}
+]
+}

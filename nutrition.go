@@ -62,12 +62,7 @@ type NutrientPlan struct {
 	Ingredients []Ingredient `json:"ingredients"`
 }
 
-// bad name.
 func readData(path string) ([]Order, []Recipe, []Ingredient) {
-	// orders := []Order{}
-	// recipes := []Recipe{}
-	// ingredients := []Ingredient{}
-
 	dfile, err := ioutil.ReadFile(path)
 	if err != nil {
 		fmt.Printf("could not read file from path: %v\n", err)

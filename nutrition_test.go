@@ -6,22 +6,39 @@ import (
 	"testing"
 )
 
-func TestCalculatesTheCostOfPorridge(t *testing.T) {
-	oats := Ingredient{"oats", 0, 0.7, 0, 0, 0, 0, 0, 0}
-	blueberries := Ingredient{"blueberries", 0, 0.2, 0, 0, 0, 0, 0, 0}
+var oatsItem FoodItem
+var blueberriesItem FoodItem
+
+func init() {
+	oatsItem = FoodItem{"oats", 1000, 2, 0, 0, 0, 0, 0, 0}
+	blueberriesItem = FoodItem{"blueberries", 200, 2, 0, 0, 0, 0, 0, 0}
+}
+
+func TestCostOfPorridge(t *testing.T) {
+	oats := Ingredient{oatsItem, 70}
+	blueberries := Ingredient{blueberriesItem, 20}
 
 	porridge := Recipe{[]Ingredient{oats}}
 
-	if porridge.Price() != 0.7 {
+	if porridge.Price() != 29 {
 		t.Errorf("wrong price for porridge: %v\n", porridge.Price())
 	}
 
 	porridgeWithBlueberries := Recipe{[]Ingredient{oats, blueberries}}
 
-	if porridgeWithBlueberries.Price() != 0.9 {
+	if porridgeWithBlueberries.Price() != 49 {
 		t.Errorf(
 			"wrong price for porridge with blueberries: %v\n",
 			porridgeWithBlueberries.Price())
+	}
+}
+
+func TestCostOfSteak(t *testing.T) {
+	steakItem := FoodItem{"Steak", 300, 5, 0, 0, 0, 0, 0, 0}
+	steak := Ingredient{steakItem, 300}
+
+	if steak.Price() != 5 {
+		t.Errorf("wrong price for steak: %v\n", steak.Price())
 	}
 }
 
@@ -30,8 +47,8 @@ func TestCalculatesTheCostOfPorridge(t *testing.T) {
 //   - total cost
 //   - total nutrition (energy kcal, protein, carbs, fat)
 func TestWeeklyOrder(t *testing.T) {
-	oats := Ingredient{"oats", 70, 0.7, 0, 0, 0, 0, 0, 0}
-	blueberries := Ingredient{"blueberries", 60, 0.2, 0, 0, 0, 0, 0, 0}
+	oats := Ingredient{oatsItem, 70}
+	blueberries := Ingredient{blueberriesItem, 60}
 
 	porridgeWithBlueberries := Recipe{[]Ingredient{oats, blueberries}}
 

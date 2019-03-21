@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math"
 	"os"
 	"strings"
 )
@@ -15,25 +16,39 @@ type Recipe struct {
 func (r Recipe) Price() float32 {
 	var price float32
 	for _, i := range r.ingredients {
-		price += i.Price()
+		price += i.FoodItem.Price * i.Ratio()
 	}
-	return price
+	// this casting is lunacy. surely there is a better way.
+	return float32(math.Ceil(float64(price)))
+}
+
+// A FoodItem is something that can be bought at a store (currently this is
+// Mike's local Tesco)
+type FoodItem struct {
+	Name    string
+	Amount  int     // purchased amount in grams
+	Price   float32 // retail price
+	Energy  int     // kcal
+	Fat     float32 // grams
+	Sfat    float32 // saturated fat
+	Carbs   float32 // total (incl. sugars) grams
+	Sugars  float32 // grams
+	Protein float32
 }
 
 type Ingredient struct {
-	name    string
-	amount  int     // purchased amount in grams
-	price   float32 // retail price
-	energy  int     // kcal
-	fat     float32 // grams
-	sfat    float32 // saturated fat
-	carbs   float32 // total (incl. sugars) grams
-	sugars  float32 // grams
-	protein float32
+	FoodItem FoodItem
+	Amount   int
+}
+
+// the amount of ingredient relative to the FoodItem's original amount. For
+// example oats FoodItem is 100g but the Ingredient amount may only be 70g.
+func (i Ingredient) Ratio() float32 {
+	return float32(i.FoodItem.Amount) / float32(i.Amount)
 }
 
 func (i Ingredient) Price() float32 {
-	return i.price
+	return i.FoodItem.Price * i.Ratio()
 }
 
 type Order struct {
@@ -48,12 +63,10 @@ func (o Order) Price() float32 {
 	return price
 }
 
-func (o Order) Ingredients() map[string]int {
-	ingredients := map[string]int{}
+func (o Order) Ingredients() []Ingredient {
+	ingredients := []Ingredient{}
 	for _, r := range o.recipes {
-		for _, i := range r.ingredients {
-			ingredients[i.name] += i.amount
-		}
+		ingredients = append(ingredients, r.ingredients...)
 	}
 	return ingredients
 }

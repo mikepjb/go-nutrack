@@ -9,6 +9,10 @@
   {"name": "porridge"}
 ],
 "ingredients": [
-  {"name": "steel cut oats"}
+  {
+    "name": "Scott's Old Fashioned Porage Oats",
+    "amount": 1000,
+    "price": 2.00
+  }
 ]
 }

@@ -21,9 +21,15 @@ func (r Recipe) Price() float32 {
 }
 
 type Ingredient struct {
-	name   string
-	amount int     // amount in grams
-	price  float32 // price per 100g
+	name    string
+	amount  int     // purchased amount in grams
+	price   float32 // retail price
+	energy  int     // kcal
+	fat     float32 // grams
+	sfat    float32 // saturated fat
+	carbs   float32 // total (incl. sugars) grams
+	sugars  float32 // grams
+	protein float32
 }
 
 func (i Ingredient) Price() float32 {

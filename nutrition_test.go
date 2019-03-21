@@ -7,8 +7,8 @@ import (
 )
 
 func TestCalculatesTheCostOfPorridge(t *testing.T) {
-	oats := Ingredient{"oats", 0, 0.7}
-	blueberries := Ingredient{"blueberries", 0, 0.2}
+	oats := Ingredient{"oats", 0, 0.7, 0, 0, 0, 0, 0, 0}
+	blueberries := Ingredient{"blueberries", 0, 0.2, 0, 0, 0, 0, 0, 0}
 
 	porridge := Recipe{[]Ingredient{oats}}
 
@@ -30,8 +30,8 @@ func TestCalculatesTheCostOfPorridge(t *testing.T) {
 //   - total cost
 //   - total nutrition (energy kcal, protein, carbs, fat)
 func TestWeeklyOrder(t *testing.T) {
-	oats := Ingredient{"oats", 70, 0.7}
-	blueberries := Ingredient{"blueberries", 60, 0.2}
+	oats := Ingredient{"oats", 70, 0.7, 0, 0, 0, 0, 0, 0}
+	blueberries := Ingredient{"blueberries", 60, 0.2, 0, 0, 0, 0, 0, 0}
 
 	porridgeWithBlueberries := Recipe{[]Ingredient{oats, blueberries}}
 

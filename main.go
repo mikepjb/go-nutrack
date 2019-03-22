@@ -21,4 +21,12 @@ func main() {
 	fmt.Printf("Recipes: %v\n", recipes)
 	fmt.Printf("Ingredients: %v\n", ingredients)
 	fmt.Printf("FoodItems: %v\n", foodItems)
+
+	var totalRecipePrices float32
+
+	for _, r := range recipes {
+		totalRecipePrices += r.Price()
+	}
+
+	fmt.Printf("Total Prices for Recipes: %v\n", totalRecipePrices)
 }

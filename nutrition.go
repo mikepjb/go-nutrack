@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"math"
 	"os"
 	"strings"
 )
@@ -18,8 +17,7 @@ func (r Recipe) Price() float32 {
 	for _, i := range r.ingredients {
 		price += i.FoodItem.Price * i.Ratio()
 	}
-	// this casting is lunacy. surely there is a better way.
-	return float32(math.Ceil(float64(price)))
+	return price
 }
 
 // A FoodItem is something that can be bought at a store (currently this is

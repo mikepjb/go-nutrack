@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"reflect"
 	"testing"
 )
@@ -20,13 +19,13 @@ func TestCostOfPorridge(t *testing.T) {
 
 	porridge := Recipe{[]Ingredient{oats}}
 
-	if porridge.Price() != 29 {
+	if porridge.Price() != 28.571428 {
 		t.Errorf("wrong price for porridge: %v\n", porridge.Price())
 	}
 
 	porridgeWithBlueberries := Recipe{[]Ingredient{oats, blueberries}}
 
-	if porridgeWithBlueberries.Price() != 49 {
+	if porridgeWithBlueberries.Price() != 48.571426 {
 		t.Errorf(
 			"wrong price for porridge with blueberries: %v\n",
 			porridgeWithBlueberries.Price())
@@ -54,15 +53,11 @@ func TestWeeklyOrder(t *testing.T) {
 
 	order := Order{[]Recipe{porridgeWithBlueberries, porridgeWithBlueberries}}
 
-	if order.Price() != 1.8 {
+	if order.Price() != 70.47619 {
 		t.Errorf("wrong total for order: %v\n", order.Price())
 	}
 
-	expectedIngredients := map[string]int{"blueberries": 120, "oats": 140}
-	actualIngredients := order.Ingredients()
-
-	fmt.Println(actualIngredients)
-	fmt.Println(expectedIngredients)
+	expectedIngredients := []Ingredient{oats, blueberries, oats, blueberries}
 
 	if !reflect.DeepEqual(order.Ingredients(), expectedIngredients) {
 		t.Errorf(

@@ -1,0 +1,33 @@
+{
+  "orders": [
+    {"name": "weekly shop",
+      "recipes": [
+        "porridge"
+      ]
+    }
+  ],
+  "recipes": [
+    {"name": "porridge",
+      "ingredients": ["oats"]}
+  ],
+  "ingredients": [
+    {
+      "name": "oats",
+      "amount": 70
+    }
+  ],
+  "foodItem": [
+    {
+      "name": "oats",
+      "desc": "Scott's Old Fashioned Porage Oats",
+      "amount": 1000,
+      "price": 2.00,
+      "energy": 374,
+      "fat": 8,
+      "sfat": 1.5,
+      "carbs": 60,
+      "sugars": 1.1,
+      "protein": 11
+    }
+  ]
+}

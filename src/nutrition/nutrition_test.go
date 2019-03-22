@@ -1,4 +1,4 @@
-package main
+package nutrition
 
 import (
 	"reflect"
@@ -9,21 +9,24 @@ var oatsItem FoodItem
 var blueberriesItem FoodItem
 
 func init() {
-	oatsItem = FoodItem{"oats", 1000, 2, 0, 0, 0, 0, 0, 0}
-	blueberriesItem = FoodItem{"blueberries", 200, 2, 0, 0, 0, 0, 0, 0}
+	oatsItem = FoodItem{"oats", "some oats", 1000, 2, 0, 0, 0, 0, 0, 0}
+	blueberriesItem = FoodItem{"blueberries", "some blueberries", 200, 2, 0, 0, 0, 0, 0, 0}
 }
 
 func TestCostOfPorridge(t *testing.T) {
-	oats := Ingredient{oatsItem, 70}
-	blueberries := Ingredient{blueberriesItem, 20}
+	oats := Ingredient{"oats", oatsItem, 70}
+	blueberries := Ingredient{"blueberries", blueberriesItem, 20}
 
-	porridge := Recipe{[]Ingredient{oats}}
+	porridge := Recipe{"porridge", []Ingredient{oats}}
 
 	if porridge.Price() != 28.571428 {
 		t.Errorf("wrong price for porridge: %v\n", porridge.Price())
 	}
 
-	porridgeWithBlueberries := Recipe{[]Ingredient{oats, blueberries}}
+	porridgeWithBlueberries := Recipe{
+		"porridge with blueberries",
+		[]Ingredient{oats, blueberries},
+	}
 
 	if porridgeWithBlueberries.Price() != 48.571426 {
 		t.Errorf(
@@ -33,8 +36,8 @@ func TestCostOfPorridge(t *testing.T) {
 }
 
 func TestCostOfSteak(t *testing.T) {
-	steakItem := FoodItem{"Steak", 300, 5, 0, 0, 0, 0, 0, 0}
-	steak := Ingredient{steakItem, 300}
+	steakItem := FoodItem{"Steak", "delicious", 300, 5, 0, 0, 0, 0, 0, 0}
+	steak := Ingredient{"Steak", steakItem, 300}
 
 	if steak.Price() != 5 {
 		t.Errorf("wrong price for steak: %v\n", steak.Price())
@@ -46,10 +49,10 @@ func TestCostOfSteak(t *testing.T) {
 //   - total cost
 //   - total nutrition (energy kcal, protein, carbs, fat)
 func TestWeeklyOrder(t *testing.T) {
-	oats := Ingredient{oatsItem, 70}
-	blueberries := Ingredient{blueberriesItem, 60}
+	oats := Ingredient{"oats", oatsItem, 70}
+	blueberries := Ingredient{"blueberries", blueberriesItem, 60}
 
-	porridgeWithBlueberries := Recipe{[]Ingredient{oats, blueberries}}
+	porridgeWithBlueberries := Recipe{"porridge with blueberries", []Ingredient{oats, blueberries}}
 
 	order := Order{[]Recipe{porridgeWithBlueberries, porridgeWithBlueberries}}
 
@@ -69,7 +72,7 @@ func TestWeeklyOrder(t *testing.T) {
 // nutrition should be able to read information about orders, recipes and
 // ingredients from a JSON file.
 func TestReadData(t *testing.T) {
-	orders, recipes, ingredients := readData("nutrient-plan.json")
+	orders, recipes, ingredients, foodItems := ReadFile("test-plan.json")
 
 	if len(orders) != 1 {
 		t.Errorf("wrong number of orders: %v\n", len(orders))
@@ -81,5 +84,9 @@ func TestReadData(t *testing.T) {
 
 	if len(ingredients) != 1 {
 		t.Errorf("wrong number of ingredients: %v\n", len(ingredients))
+	}
+
+	if len(foodItems) != 1 {
+		t.Errorf("wrong number of food items: %v\n", len(foodItems))
 	}
 }

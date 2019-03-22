@@ -97,6 +97,11 @@ func readData(path string) ([]Order, []Recipe, []Ingredient) {
 }
 
 func main() {
+	if len(os.Args[1:]) == 0 {
+		fmt.Println("no args supplied")
+		os.Exit(0)
+	}
+
 	jsonPath := strings.Join(os.Args[1:], "")
 	orders, recipes, ingredients := readData(jsonPath)
 

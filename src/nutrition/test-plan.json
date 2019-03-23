@@ -3,16 +3,32 @@
     {"name": "weekly shop",
       "recipes": [
         "porridge",
+        "pizza",
         "chicken supreme",
+
+        "porridge",
         "chicken supreme",
+        "risotto",
+
+        "porridge",
+        "risotto",
+        "porridge",
+
+        "porridge",
         "porridge",
         "tikka masala",
+
         "porridge",
         "porridge",
+        "tikka masala",
+
+        "scrambled eggs",
         "porridge",
+        "tikka masala",
+
+        "scrambled eggs",
         "porridge",
-        "porridge",
-        "scrambled eggs"
+        "tikka masala"
       ]
     }
   ],
@@ -23,6 +39,14 @@
     },
     {
       "name": "chicken supreme",
+      "ingredients": ["chicken"]
+    },
+    {
+      "name": "pizza",
+      "ingredients": ["chicken"]
+    },
+    {
+      "name": "risotto",
       "ingredients": ["chicken"]
     },
     {

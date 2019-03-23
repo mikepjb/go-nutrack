@@ -9,14 +9,19 @@ import (
 )
 
 func PrintOrders(orders []nutrition.Order) {
+	var count int
 	fmt.Printf("Orders:\n==================\n")
 	for _, o := range orders {
 		fmt.Printf("%v:\n", o.Name)
 		for _, r := range o.Recipes {
 			fmt.Printf("  %v\n", r.Name)
+			count++
+			if count == 3 {
+				fmt.Printf("\n")
+				count = 0
+			}
 		}
 	}
-	fmt.Printf("\n")
 }
 
 func PrintRecipes(recipes []nutrition.Recipe) {
@@ -61,7 +66,6 @@ func main() {
 
 	for _, o := range orders {
 		for _, r := range o.Recipes {
-			fmt.Printf("Price for %v is %v\n", r.Name, r.Price())
 			totalRecipePrices += r.Price()
 		}
 	}

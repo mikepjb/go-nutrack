@@ -10,3 +10,13 @@ need to buy.
 
 Include vitamins and minerals e.g chives have little macronutritional value but
 a tablespoon provides vitamin K, calcium, magnesium etc..
+
+### Domain Qualities After Building
+
+This is a section to collect things I missed when modelling the domain at the
+beginning.
+
+- FoodItems expire
+- FoodItems can be broken down into sub FoodItems (e.g a whole chicken can be
+  made into 2 thighs, 2 breasts, 2 wings, stock OR cooked whole)
+- Recipes can be divided into Portions

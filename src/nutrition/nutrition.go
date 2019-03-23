@@ -45,7 +45,7 @@ type Ingredient struct {
 // the amount of ingredient relative to the FoodItem's original amount. For
 // example oats FoodItem is 100g but the Ingredient amount may only be 70g.
 func (i Ingredient) Ratio() float32 {
-	return float32(i.FoodItem.Amount) / float32(i.Amount)
+	return float32(i.Amount) / float32(i.FoodItem.Amount)
 }
 
 func (i Ingredient) Price() float32 {

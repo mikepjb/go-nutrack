@@ -19,7 +19,7 @@ func TestCostOfPorridge(t *testing.T) {
 
 	porridge := Recipe{"porridge", []Ingredient{oats}}
 
-	if porridge.Price() != 28.571428 {
+	if porridge.Price() != 0.14 {
 		t.Errorf("wrong price for porridge: %v\n", porridge.Price())
 	}
 
@@ -28,7 +28,7 @@ func TestCostOfPorridge(t *testing.T) {
 		[]Ingredient{oats, blueberries},
 	}
 
-	if porridgeWithBlueberries.Price() != 48.571426 {
+	if porridgeWithBlueberries.Price() != 0.34 {
 		t.Errorf(
 			"wrong price for porridge with blueberries: %v\n",
 			porridgeWithBlueberries.Price())

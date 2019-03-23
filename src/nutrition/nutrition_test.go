@@ -56,7 +56,7 @@ func TestWeeklyOrder(t *testing.T) {
 
 	order := Order{"morning", []Recipe{porridgeWithBlueberries, porridgeWithBlueberries}}
 
-	if order.Price() != 70.47619 {
+	if order.Price() != 1.48 {
 		t.Errorf("wrong total for order: %v\n", order.Price())
 	}
 

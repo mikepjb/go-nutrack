@@ -19,4 +19,5 @@ beginning.
 - FoodItems expire
 - FoodItems can be broken down into sub FoodItems (e.g a whole chicken can be
   made into 2 thighs, 2 breasts, 2 wings, stock OR cooked whole)
-- Recipes can be divided into Portions
+- Recipes can be divided into Portions - I am using Recipes as if they were
+  single portions.. which works okay

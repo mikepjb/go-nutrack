@@ -12,22 +12,22 @@
 
         "porridge",
         "risotto",
-        "porridge",
+        "special fried rice",
 
         "porridge",
-        "porridge",
-        "tikka masala",
+        "special fried rice",
+        "ramen",
 
         "porridge",
-        "porridge",
-        "tikka masala",
-
-        "scrambled eggs",
-        "porridge",
+        "ramen",
         "tikka masala",
 
         "scrambled eggs",
-        "porridge",
+        "tikka masala",
+        "spaghetti bolignese",
+
+        "scrambled eggs",
+        "spaghetti bolignese",
         "tikka masala"
       ]
     }
@@ -54,6 +54,14 @@
       "ingredients": ["chicken"]
     },
     {
+      "name": "spaghetti bolignese",
+      "ingredients": ["chicken"]
+    },
+    {
+      "name": "special fried rice",
+      "ingredients": ["chicken"]
+    },
+    {
       "name": "scrambled eggs",
       "ingredients": ["egg", "egg", "egg", "egg", "chives", "butter"]
     }
@@ -73,11 +81,11 @@
     },
     {
       "name": "chives",
-      "amount": 300
+      "amount": 10
     },
     {
       "name": "butter",
-      "amount": 300
+      "amount": 25
     }
   ],
   "foodItem": [

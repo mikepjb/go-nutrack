@@ -2,18 +2,58 @@
   "orders": [
     {"name": "weekly shop",
       "recipes": [
-        "porridge"
+        "porridge",
+        "chicken supreme",
+        "chicken supreme",
+        "porridge",
+        "tikka masala",
+        "porridge",
+        "porridge",
+        "porridge",
+        "porridge",
+        "porridge",
+        "scrambled eggs"
       ]
     }
   ],
   "recipes": [
-    {"name": "porridge",
-      "ingredients": ["oats"]}
+    {
+      "name": "porridge",
+      "ingredients": ["oats"]
+    },
+    {
+      "name": "chicken supreme",
+      "ingredients": ["chicken"]
+    },
+    {
+      "name": "tikka masala",
+      "ingredients": ["chicken"]
+    },
+    {
+      "name": "scrambled eggs",
+      "ingredients": ["egg", "egg", "egg", "egg", "chives", "butter"]
+    }
   ],
   "ingredients": [
     {
       "name": "oats",
       "amount": 70
+    },
+    {
+      "name": "chicken",
+      "amount": 300
+    },
+    {
+      "name": "egg",
+      "amount": 300
+    },
+    {
+      "name": "chives",
+      "amount": 300
+    },
+    {
+      "name": "butter",
+      "amount": 300
     }
   ],
   "foodItem": [
@@ -28,6 +68,54 @@
       "carbs": 60,
       "sugars": 1.1,
       "protein": 11
+    },
+    {
+      "name": "chicken",
+      "desc": "Organic Whole Chicken 1.6kg",
+      "amount": 1600,
+      "price": 11.12,
+      "energy": 176,
+      "fat": 10.9,
+      "sfat": 2.9,
+      "carbs": 0,
+      "sugars": 0,
+      "protein": 19.4
+    },
+    {
+      "name": "egg",
+      "desc": "Happy Egg Co. Free Range Eggs 10",
+      "amount": 500,
+      "price": 2.00,
+      "energy": 131,
+      "fat": 9,
+      "sfat": 2.5,
+      "carbs": 0.4,
+      "sugars": 0.4,
+      "protein": 12.6
+    },
+    {
+      "name": "chives",
+      "desc": "Chive Plant",
+      "amount": 1000,
+      "price": 1.25,
+      "energy": 131,
+      "fat": 9,
+      "sfat": 2.5,
+      "carbs": 0.4,
+      "sugars": 0.4,
+      "protein": 12.6
+    },
+    {
+      "name": "butter",
+      "desc": "Lurpak Unsalted Block Butter",
+      "amount": 250,
+      "price": 2.00,
+      "energy": 747,
+      "fat": 82,
+      "sfat": 53,
+      "carbs": 0.7,
+      "sugars": 0.7,
+      "protein": 0.6
     }
   ]
 }

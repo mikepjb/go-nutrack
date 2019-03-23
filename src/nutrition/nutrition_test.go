@@ -54,7 +54,7 @@ func TestWeeklyOrder(t *testing.T) {
 
 	porridgeWithBlueberries := Recipe{"porridge with blueberries", []Ingredient{oats, blueberries}}
 
-	order := Order{[]Recipe{porridgeWithBlueberries, porridgeWithBlueberries}}
+	order := Order{"morning", []Recipe{porridgeWithBlueberries, porridgeWithBlueberries}}
 
 	if order.Price() != 70.47619 {
 		t.Errorf("wrong total for order: %v\n", order.Price())
@@ -78,15 +78,15 @@ func TestReadData(t *testing.T) {
 		t.Errorf("wrong number of orders: %v\n", len(orders))
 	}
 
-	if len(recipes) != 1 {
+	if len(recipes) != 4 {
 		t.Errorf("wrong number of recipes: %v\n", len(recipes))
 	}
 
-	if len(ingredients) != 1 {
+	if len(ingredients) != 5 {
 		t.Errorf("wrong number of ingredients: %v\n", len(ingredients))
 	}
 
-	if len(foodItems) != 1 {
+	if len(foodItems) != 5 {
 		t.Errorf("wrong number of food items: %v\n", len(foodItems))
 	}
 }

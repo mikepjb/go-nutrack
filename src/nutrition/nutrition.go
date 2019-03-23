@@ -53,12 +53,13 @@ func (i Ingredient) Price() float32 {
 }
 
 type Order struct {
-	recipes []Recipe
+	Name    string
+	Recipes []Recipe
 }
 
 func (o Order) Price() float32 {
 	var price float32
-	for _, r := range o.recipes {
+	for _, r := range o.Recipes {
 		price += r.Price()
 	}
 	return price
@@ -66,7 +67,7 @@ func (o Order) Price() float32 {
 
 func (o Order) Ingredients() []Ingredient {
 	ingredients := []Ingredient{}
-	for _, r := range o.recipes {
+	for _, r := range o.Recipes {
 		ingredients = append(ingredients, r.Ingredients...)
 	}
 	return ingredients
@@ -124,7 +125,16 @@ func IngredientByName(ingredients []Ingredient, name string) (Ingredient, error)
 			return e, nil
 		}
 	}
-	return Ingredient{}, errors.New("ingredients " + name + " not found")
+	return Ingredient{}, errors.New("ingredient " + name + " not found")
+}
+
+func RecipeByName(recipes []Recipe, name string) (Recipe, error) {
+	for _, r := range recipes {
+		if r.Name == name {
+			return r, nil
+		}
+	}
+	return Recipe{}, errors.New("recipe " + name + " not found")
 }
 
 // Reading a nutrient plan must be done in order so that food-items come first,
@@ -185,14 +195,26 @@ func ReadFile(path string) ([]Order, []Recipe, []Ingredient, []FoodItem) {
 		})
 	}
 
-	// var orders []Order
+	var orders []Order
 
-	// for _, o := range planJSON.Orders {
-	//   for _, r := range o.Recipes {
-	//   }
-	// }
+	for _, o := range planJSON.Orders {
+		var orderRecipes []Recipe
 
-	// return orders, recipes, ingredients
-	return []Order{Order{}}, recipes, ingredients, foodItems
+		for _, r := range o.Recipes {
+			recipe, err := RecipeByName(recipes, r)
 
+			if err != nil {
+				fmt.Println(err)
+			}
+
+			orderRecipes = append(orderRecipes, recipe)
+		}
+
+		orders = append(orders, Order{
+			Name:    o.Name,
+			Recipes: orderRecipes,
+		})
+	}
+
+	return orders, recipes, ingredients, foodItems
 }

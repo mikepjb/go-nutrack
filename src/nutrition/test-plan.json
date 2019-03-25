@@ -55,7 +55,7 @@
     },
     {
       "name": "spaghetti bolignese",
-      "ingredients": ["chicken"]
+      "ingredients": ["beef mince"]
     },
     {
       "name": "special fried rice",
@@ -73,6 +73,10 @@
     },
     {
       "name": "chicken",
+      "amount": 300
+    },
+    {
+      "name": "beef mince",
       "amount": 300
     },
     {

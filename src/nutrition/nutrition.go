@@ -1,17 +1,20 @@
 // ingests nutrient plans
 package nutrition
 
+type Order struct {
+	Name    string
+	Recipes []Recipe
+}
+
 type Recipe struct {
 	Name        string
 	Ingredients []Ingredient
 }
 
-func (r Recipe) Price() float32 {
-	var price float32
-	for _, i := range r.Ingredients {
-		price += i.FoodItem.Price * i.Ratio()
-	}
-	return price
+type Ingredient struct {
+	Name     string
+	FoodItem FoodItem
+	Amount   float32
 }
 
 type FoodItem struct { // items bought in at a store
@@ -27,25 +30,16 @@ type FoodItem struct { // items bought in at a store
 	Protein float32
 }
 
-type Ingredient struct {
-	Name     string
-	FoodItem FoodItem
-	Amount   float32
-}
-
-// the amount of ingredient relative to the FoodItem's original amount. For
-// example oats FoodItem is 100g but the Ingredient amount may only be 70g.
-func (i Ingredient) Ratio() float32 {
-	return i.Amount / i.FoodItem.Amount
+func (r Recipe) Price() float32 {
+	var price float32
+	for _, i := range r.Ingredients {
+		price += i.FoodItem.Price * i.Ratio()
+	}
+	return price
 }
 
 func (i Ingredient) Price() float32 {
 	return i.FoodItem.Price * i.Ratio()
-}
-
-type Order struct {
-	Name    string
-	Recipes []Recipe
 }
 
 func (o Order) Price() float32 {
@@ -54,6 +48,12 @@ func (o Order) Price() float32 {
 		price += r.Price()
 	}
 	return price
+}
+
+// the amount of ingredient relative to the FoodItem's original amount. For
+// example oats FoodItem is 100g but the Ingredient amount may only be 70g.
+func (i Ingredient) Ratio() float32 {
+	return i.Amount / i.FoodItem.Amount
 }
 
 func (o Order) Ingredients() []Ingredient {

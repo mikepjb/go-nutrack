@@ -21,14 +21,12 @@ func (r Recipe) Price() float32 {
 	return price
 }
 
-// A FoodItem is something that can be bought at a store (currently this is
-// Mike's local Tesco)
-type FoodItem struct {
+type FoodItem struct { // items bought in at a store
 	Name    string
 	Desc    string
-	Amount  int     // purchased amount in grams
+	Amount  float32 // purchased amount in grams
 	Price   float32 // retail price
-	Energy  int     // kcal
+	Energy  float32 // kcal
 	Fat     float32 // grams
 	Sfat    float32 // saturated fat
 	Carbs   float32 // total (incl. sugars) grams
@@ -39,13 +37,13 @@ type FoodItem struct {
 type Ingredient struct {
 	Name     string
 	FoodItem FoodItem
-	Amount   int
+	Amount   float32
 }
 
 // the amount of ingredient relative to the FoodItem's original amount. For
 // example oats FoodItem is 100g but the Ingredient amount may only be 70g.
 func (i Ingredient) Ratio() float32 {
-	return float32(i.Amount) / float32(i.FoodItem.Amount)
+	return i.Amount / i.FoodItem.Amount
 }
 
 func (i Ingredient) Price() float32 {
@@ -95,9 +93,9 @@ type RecipeJSON struct {
 }
 
 type IngredientJSON struct {
-	Name     string `json:"name"`
-	FoodItem string `json:"foodItem"`
-	Amount   int    `json:"amount"`
+	Name     string  `json:"name"`
+	FoodItem string  `json:"foodItem"`
+	Amount   float32 `json:"amount"`
 }
 
 // There is a seperate internal JSON specific type used when ingesting a

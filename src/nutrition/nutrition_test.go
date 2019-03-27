@@ -78,15 +78,15 @@ func TestReadData(t *testing.T) {
 		t.Errorf("wrong number of orders: %v\n", len(orders))
 	}
 
-	if len(recipes) != 8 {
+	if len(recipes) != 9 {
 		t.Errorf("wrong number of recipes: %v\n", len(recipes))
 	}
 
-	if len(ingredients) != 5 {
+	if len(ingredients) != 6 {
 		t.Errorf("wrong number of ingredients: %v\n", len(ingredients))
 	}
 
-	if len(foodItems) != 5 {
+	if len(foodItems) != 6 {
 		t.Errorf("wrong number of food items: %v\n", len(foodItems))
 	}
 }

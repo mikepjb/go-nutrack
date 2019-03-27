@@ -54,6 +54,10 @@
       "ingredients": ["chicken"]
     },
     {
+      "name": "ramen",
+      "ingredients": ["chicken"]
+    },
+    {
       "name": "spaghetti bolignese",
       "ingredients": ["beef mince"]
     },
@@ -107,6 +111,18 @@
     },
     {
       "name": "chicken",
+      "desc": "Organic Whole Chicken 1.6kg",
+      "amount": 1600,
+      "price": 11.12,
+      "energy": 176,
+      "fat": 10.9,
+      "sfat": 2.9,
+      "carbs": 0,
+      "sugars": 0,
+      "protein": 19.4
+    },
+    {
+      "name": "beef mince",
       "desc": "Organic Whole Chicken 1.6kg",
       "amount": 1600,
       "price": 11.12,

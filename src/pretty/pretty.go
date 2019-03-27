@@ -49,6 +49,7 @@ func PrintFoodItems(items []nutrition.FoodItem) {
 
 func PrintFoodItemsUsed(orders []nutrition.Order) {
 	foodItems := map[nutrition.FoodItem]float32{}
+	var totalPrice float32
 
 	ingredients := []nutrition.Ingredient{}
 
@@ -62,6 +63,14 @@ func PrintFoodItemsUsed(orders []nutrition.Order) {
 
 	fmt.Println("List of FoodItems:")
 	for fi, a := range foodItems {
-		fmt.Printf("%v : %v\n", fi, a)
+		t := nutrition.Ingredient{
+			Name:     fi.Name,
+			FoodItem: fi,
+			Amount:   a,
+		}
+		totalPrice += t.Price()
+		fmt.Printf("%v, %vg: £%.2f\n", t.Name, t.Amount, t.Price())
 	}
+
+	fmt.Printf("Total Price for Ingredients used in Orders: £%.2f\n", totalPrice)
 }

@@ -17,17 +17,21 @@ type Ingredient struct {
 	Amount   float32
 }
 
-type FoodItem struct { // items bought in at a store
-	Name    string
-	Desc    string
-	Amount  float32 // purchased amount in grams
-	Price   float32 // retail price
+type Nutrition struct {
 	Energy  float32 // kcal
 	Fat     float32 // grams
 	Sfat    float32 // saturated fat
 	Carbs   float32 // total (incl. sugars) grams
 	Sugars  float32 // grams
 	Protein float32
+}
+
+type FoodItem struct { // items bought in at a store
+	Name   string
+	Desc   string
+	Amount float32 // purchased amount in grams
+	Price  float32 // retail price
+	Nutrition
 }
 
 func (r Recipe) Price() float32 {

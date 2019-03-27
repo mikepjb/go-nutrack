@@ -9,8 +9,8 @@ var oatsItem FoodItem
 var blueberriesItem FoodItem
 
 func init() {
-	oatsItem = FoodItem{"oats", "some oats", 1000, 2, 0, 0, 0, 0, 0, 0}
-	blueberriesItem = FoodItem{"blueberries", "some blueberries", 200, 2, 0, 0, 0, 0, 0, 0}
+	oatsItem = FoodItem{"oats", "some oats", 1000, 2, Nutrition{0, 0, 0, 0, 0, 0}}
+	blueberriesItem = FoodItem{"blueberries", "some blueberries", 200, 2, Nutrition{0, 0, 0, 0, 0, 0}}
 }
 
 func TestCostOfPorridge(t *testing.T) {
@@ -36,7 +36,7 @@ func TestCostOfPorridge(t *testing.T) {
 }
 
 func TestCostOfSteak(t *testing.T) {
-	steakItem := FoodItem{"Steak", "delicious", 300, 5, 0, 0, 0, 0, 0, 0}
+	steakItem := FoodItem{"Steak", "delicious", 300, 5, Nutrition{0, 0, 0, 0, 0, 0}}
 	steak := Ingredient{"Steak", steakItem, 300}
 
 	if steak.Price() != 5 {

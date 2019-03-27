@@ -47,6 +47,7 @@ func PrintFoodItems(items []nutrition.FoodItem) {
 	fmt.Printf("\n")
 }
 
+// this has application logic and should be moved to nutrition
 func PrintFoodItemsUsed(orders []nutrition.Order) {
 	foodItems := map[nutrition.FoodItem]float32{}
 	var totalPrice float32

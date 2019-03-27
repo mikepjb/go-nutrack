@@ -46,3 +46,22 @@ func PrintFoodItems(items []nutrition.FoodItem) {
 	}
 	fmt.Printf("\n")
 }
+
+func PrintFoodItemsUsed(orders []nutrition.Order) {
+	foodItems := map[nutrition.FoodItem]float32{}
+
+	ingredients := []nutrition.Ingredient{}
+
+	for _, o := range orders {
+		ingredients = append(ingredients, o.Ingredients()...)
+	}
+
+	for _, i := range ingredients {
+		foodItems[i.FoodItem] += i.Amount
+	}
+
+	fmt.Println("List of FoodItems:")
+	for fi, a := range foodItems {
+		fmt.Printf("%v : %v\n", fi, a)
+	}
+}

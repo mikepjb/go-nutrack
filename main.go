@@ -22,6 +22,7 @@ func main() {
 	pretty.PrintRecipes(recipes)
 	pretty.PrintIngredients(ingredients)
 	pretty.PrintFoodItems(foodItems)
+	pretty.PrintFoodItemsUsed(orders)
 
 	var totalRecipePrices float32
 

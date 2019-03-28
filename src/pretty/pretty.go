@@ -31,6 +31,14 @@ func PrintRecipes(recipes []nutrition.Recipe) {
 	fmt.Printf("\n")
 }
 
+func PrintRecipesNutrition(recipes []nutrition.Recipe) {
+	fmt.Printf("Recipes:\n==================\n")
+	for _, r := range recipes {
+		fmt.Printf("%v: %+v\n", r.Name, r.Nutrition())
+	}
+	fmt.Printf("\n")
+}
+
 func PrintIngredients(ingredients []nutrition.Ingredient) {
 	fmt.Printf("Ingredients:\n==================\n")
 	for _, i := range ingredients {

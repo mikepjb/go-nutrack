@@ -34,16 +34,44 @@ type FoodItem struct { // items bought in at a store
 	Nutrition
 }
 
+func (r Recipe) Nutrition() Nutrition {
+	var totalNutrition Nutrition
+
+	for _, i := range r.Ingredients {
+		totalNutrition = Nutrition{
+			Energy:  totalNutrition.Energy + (i.FoodItem.Energy * i.NutritionRatio()),
+			Fat:     totalNutrition.Fat + (i.FoodItem.Fat * i.NutritionRatio()),
+			Sfat:    totalNutrition.Sfat + (i.FoodItem.Sfat * i.NutritionRatio()),
+			Carbs:   totalNutrition.Carbs + (i.FoodItem.Carbs * i.NutritionRatio()),
+			Sugars:  totalNutrition.Sugars + (i.FoodItem.Sugars * i.NutritionRatio()),
+			Protein: totalNutrition.Protein + (i.FoodItem.Protein * i.NutritionRatio()),
+		}
+	}
+
+	return totalNutrition
+}
+
+func (i Ingredient) Nutrition() Nutrition {
+	return Nutrition{
+		Energy:  i.FoodItem.Energy * i.NutritionRatio(),
+		Fat:     i.FoodItem.Fat * i.NutritionRatio(),
+		Sfat:    i.FoodItem.Sfat * i.NutritionRatio(),
+		Carbs:   i.FoodItem.Carbs * i.NutritionRatio(),
+		Sugars:  i.FoodItem.Sugars * i.NutritionRatio(),
+		Protein: i.FoodItem.Protein * i.NutritionRatio(),
+	}
+}
+
 func (r Recipe) Price() float32 {
 	var price float32
 	for _, i := range r.Ingredients {
-		price += i.FoodItem.Price * i.Ratio()
+		price += i.FoodItem.Price * i.WeightRatio()
 	}
 	return price
 }
 
 func (i Ingredient) Price() float32 {
-	return i.FoodItem.Price * i.Ratio()
+	return i.FoodItem.Price * i.WeightRatio()
 }
 
 func (o Order) Price() float32 {
@@ -56,8 +84,12 @@ func (o Order) Price() float32 {
 
 // the amount of ingredient relative to the FoodItem's original amount. For
 // example oats FoodItem is 100g but the Ingredient amount may only be 70g.
-func (i Ingredient) Ratio() float32 {
+func (i Ingredient) WeightRatio() float32 {
 	return i.Amount / i.FoodItem.Amount
+}
+
+func (i Ingredient) NutritionRatio() float32 {
+	return i.Amount / 100
 }
 
 func (o Order) Ingredients() []Ingredient {

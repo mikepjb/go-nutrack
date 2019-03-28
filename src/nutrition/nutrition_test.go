@@ -44,6 +44,17 @@ func TestCostOfSteak(t *testing.T) {
 	}
 }
 
+func TestNutritionOfMultiSteak(t *testing.T) {
+	steakItem := FoodItem{"Steak", "delicious", 300, 5, Nutrition{0, 0, 0, 0, 0, 25}}
+	steak := Ingredient{"Steak", steakItem, 300}
+
+	multiSteak := Recipe{"multi steak", []Ingredient{steak, steak, steak}}
+
+	if multiSteak.Nutrition().Protein != 225 {
+		t.Errorf("wrong price for steak: %v\n", multiSteak.Nutrition().Protein)
+	}
+}
+
 // given a list of meals:
 //   - return a list of ingredients required
 //   - total cost

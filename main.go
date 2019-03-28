@@ -20,6 +20,7 @@ func main() {
 
 	pretty.PrintOrders(orders)
 	pretty.PrintRecipes(recipes)
+	pretty.PrintRecipesNutrition(recipes)
 	pretty.PrintIngredients(ingredients)
 	pretty.PrintFoodItems(foodItems)
 	pretty.PrintFoodItemsUsed(orders)

@@ -35,11 +35,11 @@
   "recipes": [
     {
       "name": "porridge",
-      "ingredients": ["oats"]
+      "ingredients": ["oats", "oat milk", "blueberries", "whey"]
     },
     {
       "name": "chicken supreme",
-      "ingredients": ["chicken"]
+      "ingredients": ["chicken", "butter"]
     },
     {
       "name": "pizza",
@@ -76,6 +76,18 @@
       "amount": 70
     },
     {
+      "name": "oat milk",
+      "amount": 200
+    },
+    {
+      "name": "blueberries",
+      "amount": 30
+    },
+    {
+      "name": "whey",
+      "amount": 25
+    },
+    {
       "name": "chicken",
       "amount": 300
     },
@@ -110,28 +122,64 @@
       "protein": 11
     },
     {
+      "name": "oat milk",
+      "desc": "Oatly Oat Drink Whole",
+      "amount": 1000,
+      "price": 1.80,
+      "energy": 57,
+      "fat": 2.8,
+      "sfat": 0.3,
+      "carbs": 6.6,
+      "sugars": 4.1,
+      "protein": 1.0
+    },
+    {
+      "name": "blueberries",
+      "desc": "Blueberries",
+      "amount": 150,
+      "price": 2.00,
+      "energy": 68.30,
+      "fat": 0.30,
+      "sfat": 0.03,
+      "carbs": 14.50,
+      "sugars": 10.00,
+      "protein": 0.7
+    },
+    {
+      "name": "whey",
+      "desc": "MYPROTEIN Impact Whey Isolate (Vanilla)",
+      "amount": 2500,
+      "price": 35.00,
+      "energy": 373,
+      "fat": 0.30,
+      "sfat": 0.30,
+      "carbs": 2.5,
+      "sugars": 2.5,
+      "protein": 90
+    },
+    {
       "name": "chicken",
-      "desc": "Organic Whole Chicken 1.6kg",
-      "amount": 1600,
+      "desc": "Organic Whole Chicken 1.6kg (2/3rd meat: just over 1kg)",
+      "amount": 1000,
       "price": 11.12,
-      "energy": 176,
-      "fat": 10.9,
-      "sfat": 2.9,
+      "energy": 177,
+      "fat": 8,
+      "sfat": 2.3,
       "carbs": 0,
       "sugars": 0,
-      "protein": 19.4
+      "protein": 24
     },
     {
       "name": "beef mince",
-      "desc": "Organic Whole Chicken 1.6kg",
-      "amount": 1600,
-      "price": 11.12,
-      "energy": 176,
-      "fat": 10.9,
-      "sfat": 2.9,
+      "desc": "Beef Mince 5%",
+      "amount": 500,
+      "price": 2.50,
+      "energy": 209,
+      "fat": 14.9,
+      "sfat": 6.5,
       "carbs": 0,
       "sugars": 0,
-      "protein": 19.4
+      "protein": 19.7
     },
     {
       "name": "egg",

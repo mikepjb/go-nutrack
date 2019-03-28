@@ -26,15 +26,7 @@ func PrintOrders(orders []nutrition.Order) {
 func PrintRecipes(recipes []nutrition.Recipe) {
 	fmt.Printf("Recipes:\n==================\n")
 	for _, r := range recipes {
-		fmt.Printf("%v: %v\n", r.Name, r.Price())
-	}
-	fmt.Printf("\n")
-}
-
-func PrintRecipesNutrition(recipes []nutrition.Recipe) {
-	fmt.Printf("Recipes:\n==================\n")
-	for _, r := range recipes {
-		fmt.Printf("%v: %+v\n", r.Name, r.Nutrition())
+		fmt.Printf("%v: %+v, £%.2f\n", r.Name, r.Nutrition(), r.Price())
 	}
 	fmt.Printf("\n")
 }

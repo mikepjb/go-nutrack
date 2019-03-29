@@ -42,7 +42,7 @@ func PrintIngredients(ingredients []nutrition.Ingredient) {
 func PrintFoodItems(items []nutrition.FoodItem) {
 	fmt.Printf("FoodItems:\n==================\n")
 	for _, i := range items {
-		fmt.Printf("%v: %v\n", i.Desc, i.Price)
+		fmt.Printf("%v: £%.2f\n", i.Desc, i.Price)
 	}
 	fmt.Printf("\n")
 }

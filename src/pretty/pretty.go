@@ -57,6 +57,8 @@ func PrintOrdersNutrition(orders []nutrition.Order) {
 
 	fmt.Printf("Target Daily Nutrition: %+v\n", targetNutrition)
 
+	fmt.Println("Vitamins and Minerals?")
+
 	var sum float32 = fat + carbs + protein
 
 	fmt.Printf(

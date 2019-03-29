@@ -25,3 +25,8 @@ beginning.
 ### Notes on Nutrition
 
 Weight loss - find your metabolic rate and set a 500 calorie deficit.
+
+RDA for Protein based on:
+  - Kent University study - 1.4 grams per kg of bodyweight for strength training.
+  - Susan M Kleiner from Case Western Reserve University - 1.6-2.2 grams per kg.
+  - Personal experience - 1.6 is pretty good for moderate exercise (3 sessions)

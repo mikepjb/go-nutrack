@@ -44,7 +44,7 @@ func PrintOrdersNutrition(orders []nutrition.Order) {
 
 	var fat float32 = 95
 	var carbs float32 = 200
-	var protein float32 = weight * 1.4
+	var protein float32 = weight * 1.6
 
 	targetNutrition := nutrition.Nutrition{
 		Energy:  (fat * 9) + (carbs * 4) + (protein * 4),
@@ -56,6 +56,15 @@ func PrintOrdersNutrition(orders []nutrition.Order) {
 	}
 
 	fmt.Printf("Target Daily Nutrition: %+v\n", targetNutrition)
+
+	var sum float32 = fat + carbs + protein
+
+	fmt.Printf(
+		"Fat/Carb/Protein Ratio: %.2f : %.2f : %.2f\n\n",
+		fat/sum,
+		carbs/sum,
+		protein/sum,
+	)
 }
 
 func PrintRecipes(recipes []nutrition.Recipe) {

@@ -23,14 +23,4 @@ func main() {
 	pretty.PrintIngredients(ingredients)
 	pretty.PrintFoodItems(foodItems)
 	pretty.PrintFoodItemsUsed(orders)
-
-	var totalRecipePrices float32
-
-	for _, o := range orders {
-		for _, r := range o.Recipes {
-			totalRecipePrices += r.Price()
-		}
-	}
-
-	fmt.Printf("Total Prices for Orders: %v\n", totalRecipePrices)
 }

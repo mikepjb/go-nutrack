@@ -81,5 +81,5 @@ func PrintFoodItemsUsed(orders []nutrition.Order) {
 
 	w.Flush()
 
-	fmt.Printf("Total Price for Ingredients used in Orders: £%.2f\n", totalPrice)
+	fmt.Printf("\nTotal Price for Ingredients used in Orders: £%.2f\n", totalPrice)
 }

@@ -39,11 +39,11 @@
     },
     {
       "name": "chicken supreme",
-      "ingredients": ["chicken", "butter"]
+      "ingredients": ["chicken", "butter", "olive oil"]
     },
     {
       "name": "pizza",
-      "ingredients": ["chicken"]
+      "ingredients": ["wholemeal flour"]
     },
     {
       "name": "risotto",
@@ -55,7 +55,7 @@
     },
     {
       "name": "ramen",
-      "ingredients": ["chicken"]
+      "ingredients": ["egg noodles"]
     },
     {
       "name": "spaghetti bolignese",
@@ -71,6 +71,18 @@
     }
   ],
   "ingredients": [
+    {
+      "name": "wholemeal flour",
+      "amount": 300
+    },
+    {
+      "name": "egg noodles",
+      "amount": 125
+    },
+    {
+      "name": "olive oil",
+      "amount": 25
+    },
     {
       "name": "oats",
       "amount": 70
@@ -89,7 +101,7 @@
     },
     {
       "name": "chicken",
-      "amount": 300
+      "amount": 250
     },
     {
       "name": "beef mince",
@@ -113,6 +125,42 @@
     }
   ],
   "foodItem": [
+    {
+      "name": "wholemeal flour",
+      "desc": "Allinson Wholemeal Plain Flour",
+      "amount": 1000,
+      "price": 1.80,
+      "energy": 250,
+      "fat": 2.6,
+      "sfat": 0.5,
+      "carbs": 65,
+      "sugars": 0.8,
+      "protein": 12
+    },
+    {
+      "name": "egg noodles",
+      "desc": "Medium Egg Noodles",
+      "amount": 250,
+      "price": 0.99,
+      "energy": 131,
+      "fat": 0.5,
+      "sfat": 0.1,
+      "carbs": 25.7,
+      "sugars": 0.5,
+      "protein": 4.7
+    },
+    {
+      "name": "olive oil",
+      "desc": "Filippo Berio Extra Virgin Olive Oil",
+      "amount": 1000,
+      "price": 7.99,
+      "energy": 822,
+      "fat": 91.3,
+      "sfat": 15.5,
+      "carbs": 0,
+      "sugars": 0,
+      "protein": 0
+    },
     {
       "name": "oats",
       "desc": "Scott's Old Fashioned Porage Oats",

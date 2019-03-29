@@ -19,6 +19,7 @@ func main() {
 	orders, recipes, ingredients, foodItems := ref.ReadFile(jsonPath)
 
 	pretty.PrintOrders(orders)
+	pretty.PrintOrdersNutrition(orders)
 	pretty.PrintRecipes(recipes)
 	pretty.PrintIngredients(ingredients)
 	pretty.PrintFoodItems(foodItems)

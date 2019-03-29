@@ -34,6 +34,24 @@ type FoodItem struct { // items bought in at a store
 	Nutrition
 }
 
+func (o Order) Nutrition() Nutrition {
+	var totalNutrition Nutrition
+
+	for _, r := range o.Recipes {
+		rn := r.Nutrition()
+		totalNutrition = Nutrition{
+			Energy:  totalNutrition.Energy + rn.Energy,
+			Fat:     totalNutrition.Fat + rn.Fat,
+			Sfat:    totalNutrition.Sfat + rn.Sfat,
+			Carbs:   totalNutrition.Carbs + rn.Carbs,
+			Sugars:  totalNutrition.Sugars + rn.Sugars,
+			Protein: totalNutrition.Protein + rn.Protein,
+		}
+	}
+
+	return totalNutrition
+}
+
 func (r Recipe) Nutrition() Nutrition {
 	var totalNutrition Nutrition
 

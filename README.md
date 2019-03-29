@@ -21,3 +21,7 @@ beginning.
   made into 2 thighs, 2 breasts, 2 wings, stock OR cooked whole)
 - Recipes can be divided into Portions - I am using Recipes as if they were
   single portions.. which works okay
+
+### Notes on Nutrition
+
+Weight loss - find your metabolic rate and set a 500 calorie deficit.

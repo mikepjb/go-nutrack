@@ -25,6 +25,39 @@ func PrintOrders(orders []nutrition.Order) {
 	}
 }
 
+func PrintOrdersNutrition(orders []nutrition.Order) {
+	weeklyNutrition := orders[0].Nutrition()
+	fmt.Printf("Total Weekly Nutrition: %+v\n", weeklyNutrition)
+
+	dailyNutrition := nutrition.Nutrition{
+		Energy:  weeklyNutrition.Energy / 7,
+		Fat:     weeklyNutrition.Fat / 7,
+		Sfat:    weeklyNutrition.Sfat / 7,
+		Carbs:   weeklyNutrition.Carbs / 7,
+		Sugars:  weeklyNutrition.Sugars / 7,
+		Protein: weeklyNutrition.Protein / 7,
+	}
+
+	fmt.Printf("Average Daily Nutrition: %+v\n", dailyNutrition)
+
+	var weight float32 = 88 // my weight in kg
+
+	var fat float32 = 95
+	var carbs float32 = 200
+	var protein float32 = weight * 1.4
+
+	targetNutrition := nutrition.Nutrition{
+		Energy:  (fat * 9) + (carbs * 4) + (protein * 4),
+		Fat:     fat,
+		Sfat:    20,
+		Carbs:   carbs,
+		Sugars:  20,
+		Protein: protein,
+	}
+
+	fmt.Printf("Target Daily Nutrition: %+v\n", targetNutrition)
+}
+
 func PrintRecipes(recipes []nutrition.Recipe) {
 	fmt.Printf("Recipes:\n==================\n")
 	for _, r := range recipes {

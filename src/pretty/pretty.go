@@ -3,6 +3,8 @@ package pretty
 
 import (
 	"fmt"
+	"os"
+	"text/tabwriter"
 
 	"github.com/mikepjb/nutrition/src/nutrition"
 )
@@ -40,15 +42,19 @@ func PrintIngredients(ingredients []nutrition.Ingredient) {
 }
 
 func PrintFoodItems(items []nutrition.FoodItem) {
+	w := new(tabwriter.Writer).Init(os.Stdout, 0, 0, 2, ' ', 0)
+
 	fmt.Printf("FoodItems:\n==================\n")
 	for _, i := range items {
-		fmt.Printf("%v: £%.2f\n", i.Desc, i.Price)
+		fmt.Fprintf(w, "%v\t£%.2f\n", i.Desc, i.Price)
 	}
+	w.Flush()
 	fmt.Printf("\n")
 }
 
 // this has application logic and should be moved to nutrition
 func PrintFoodItemsUsed(orders []nutrition.Order) {
+	w := new(tabwriter.Writer).Init(os.Stdout, 0, 0, 2, ' ', 0)
 	foodItems := map[nutrition.FoodItem]float32{}
 	var totalPrice float32
 
@@ -62,7 +68,7 @@ func PrintFoodItemsUsed(orders []nutrition.Order) {
 		foodItems[i.FoodItem] += i.Amount
 	}
 
-	fmt.Println("List of FoodItems:")
+	fmt.Println("List of FoodItems:\n==================")
 	for fi, a := range foodItems {
 		t := nutrition.Ingredient{
 			Name:     fi.Name,
@@ -70,8 +76,10 @@ func PrintFoodItemsUsed(orders []nutrition.Order) {
 			Amount:   a,
 		}
 		totalPrice += t.Price()
-		fmt.Printf("%v, %vg: £%.2f\n", t.Name, t.Amount, t.Price())
+		fmt.Fprintf(w, "%v\t%vg\t£%.2f\n", t.Name, t.Amount, t.Price())
 	}
+
+	w.Flush()
 
 	fmt.Printf("Total Price for Ingredients used in Orders: £%.2f\n", totalPrice)
 }

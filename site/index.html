@@ -1,14 +1,51 @@
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="/style.css">
   </head>
   <body>
-    <nav>Nutrack</nav>
+    <div class="content-width">
+      <nav>Nutrack</nav>
 
+      <section id="orders">
+        <h4>Orders</h4>
+      </section>
 
+      <section id="recipes">
+        <h4>Recipes</h4>
+      </section>
+
+    </div>
   </body>
   <script>
     var nutrientJSON
+
+    function drawOrders(orders) {
+      orders.forEach(function(o) {
+        var e = document.createElement("h5")
+        var text = document.createTextNode(o.Name)
+        e.appendChild(text)
+        var odiv = document.getElementById("orders")
+        odiv.appendChild(e)
+
+        o.Recipes.forEach(function(r) {
+          var e = document.createElement("div")
+          var text = document.createTextNode(r.Name)
+          e.appendChild(text)
+          odiv.appendChild(e)
+        })
+      })
+    }
+
+    function drawRecipes(recipes) {
+      recipes.forEach(function(r) {
+        var e = document.createElement("div")
+        var text = document.createTextNode(r.Name)
+        e.appendChild(text)
+        var rdiv = document.getElementById("recipes")
+        rdiv.appendChild(e)
+      })
+    }
 
     function loadNutritionJSON() {
       var xhr = new XMLHttpRequest();
@@ -16,6 +53,8 @@
       xhr.onload = function() {
         console.log("loading nutrient json");
         nutrientJSON = JSON.parse(this.responseText);
+        drawOrders(nutrientJSON.Orders)
+        drawRecipes(nutrientJSON.Recipes)
       }
       xhr.send();
     }

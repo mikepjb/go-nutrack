@@ -30,3 +30,13 @@ RDA for Protein based on:
   - Kent University study - 1.4 grams per kg of bodyweight for strength training.
   - Susan M Kleiner from Case Western Reserve University - 1.6-2.2 grams per kg.
   - Personal experience - 1.6 is pretty good for moderate exercise (3 sessions)
+
+RDA for Carbs based on:
+  - AJA Cortes rough guide:
+    - 50g if you are naturally a fatty (occasional "Carb" days to replenish
+      glycogen.
+    - prone to fat gain - less than 100g daily)
+    - mixed metabolism - 100-200g daily depending on activity levels.
+
+Fat slows the digestion of protein (10-20g fat) - keep blood sugar from spiking
+too much.

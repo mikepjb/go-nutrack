@@ -125,7 +125,7 @@ tr:nth-child(even) { background-color: var(--grey-10); }
 
 .icon-cheveron-right-circle {
   position: relative;
-  left: 6px;
+  left: 4px;
   width: 24px;
 }
 

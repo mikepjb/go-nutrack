@@ -44,3 +44,7 @@ RDA for Carbs based on:
 
 Fat slows the digestion of protein (10-20g fat) - keep blood sugar from spiking
 too much.
+
+## License
+Nutrack is released under the [MIT License](https://opensource.org/licenses/MIT)
+

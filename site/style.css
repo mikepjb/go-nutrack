@@ -53,6 +53,7 @@ nav {
 
 header {
   background-color: var(--primary-4);
+  background-image: linear-gradient(to bottom right, var(--primary-4), var(--primary-7));
   color: var(--grey-11);
 }
 
@@ -63,12 +64,12 @@ section {
 header .content-width div {
   display: inline-flex;
   flex-direction: column;
-  padding: 32px;
-  margin: 12px;
-  width: 256px;
+  margin-right: 12px;
+  width: 384px;
   border-radius: 4px;
-  border: 1px solid var(--grey-8);
 }
+
+header .content-width div:last-child { margin-right: 0; }
 
 table {
   border-collapse: collapse;
@@ -99,4 +100,16 @@ tr:nth-child(even) { background-color: var(--grey-10); }
   background-color: var(--primary-4);
   color: var(--primary-10);
   border-radius: 4px;
+}
+
+.label {
+  font-size: 20px;
+  font-variant: small-caps;
+  color: var(--primary-8);
+}
+
+.info {
+  font-size: 48px;
+  letter-spacing: 2px;
+  color: var(--primary-10);
 }

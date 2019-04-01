@@ -7,6 +7,10 @@
     <div class="content-width">
       <nav>Nutrack</nav>
 
+      <section id="foodItems">
+        <h4>Food Items</h4>
+      </section>
+
       <section id="orders">
         <h4>Orders</h4>
       </section>
@@ -19,6 +23,73 @@
   </body>
   <script>
     var nutrientJSON
+
+    function drawFoodItems(foodItemsUsed, total) {
+      var table = document.createElement("table")
+
+      var thead = document.createElement("thead")
+      var tr = document.createElement("tr")
+
+      var td = document.createElement("td")
+      var text = document.createTextNode("Name")
+      td.appendChild(text)
+      tr.appendChild(td)
+
+      var td = document.createElement("td")
+      var text = document.createTextNode("Amount")
+      td.appendChild(text)
+      tr.appendChild(td)
+
+      var td = document.createElement("td")
+      var text = document.createTextNode("Cost")
+      td.appendChild(text)
+      tr.appendChild(td)
+      thead.appendChild(tr)
+      table.appendChild(thead)
+
+      foodItemsUsed.forEach(function(fi) {
+        var tr = document.createElement("tr")
+
+        var td = document.createElement("td")
+        var text = document.createTextNode(fi.Name)
+        td.appendChild(text)
+        tr.appendChild(td)
+
+        var td = document.createElement("td")
+        var text = document.createTextNode(fi.Amount + "g")
+        td.appendChild(text)
+        tr.appendChild(td)
+
+        var td = document.createElement("td")
+        var text = document.createTextNode("£" + fi.Price.toFixed(2))
+        td.appendChild(text)
+        tr.appendChild(td)
+
+        table.appendChild(tr)
+      })
+
+      var tr = document.createElement("tr")
+
+      var td = document.createElement("td")
+      var text = document.createTextNode("Total")
+      td.appendChild(text)
+      tr.appendChild(td)
+
+      var td = document.createElement("td")
+      var text = document.createTextNode("--")
+      td.appendChild(text)
+      tr.appendChild(td)
+
+      var td = document.createElement("td")
+      var text = document.createTextNode("£" + total.toFixed(2))
+      td.appendChild(text)
+      tr.appendChild(td)
+
+      table.appendChild(tr)
+
+      var rdiv = document.getElementById("foodItems")
+      rdiv.appendChild(table)
+    }
 
     function drawOrders(orders) {
       orders.forEach(function(o) {
@@ -53,6 +124,9 @@
       xhr.onload = function() {
         console.log("loading nutrient json");
         nutrientJSON = JSON.parse(this.responseText);
+
+        drawFoodItems(nutrientJSON.Stats.FoodItemUse,
+          nutrientJSON.Stats.TotalPriceOfIngredients)
         drawOrders(nutrientJSON.Orders)
         drawRecipes(nutrientJSON.Recipes)
       }

@@ -9,7 +9,23 @@ import (
 
 	"github.com/mikepjb/nutrition/src/nutrition"
 	"github.com/mikepjb/nutrition/src/ref"
+	"github.com/mikepjb/nutrition/src/stats"
 )
+
+type Stats struct {
+	FoodItemUse             []stats.IngredientStat
+	TotalPriceOfIngredients float32
+}
+
+// this struct houses the other types to pass to the web view
+// better name + abstraction?
+type Transport struct {
+	Orders      []nutrition.Order
+	Recipes     []nutrition.Recipe
+	Ingredients []nutrition.Ingredient
+	FoodItems   []nutrition.FoodItem
+	Stats       Stats
+}
 
 func routes() *http.ServeMux {
 	mux := http.NewServeMux()
@@ -23,11 +39,15 @@ func routes() *http.ServeMux {
 		orders, recipes, ingredients, foodItems := ref.ReadFile(jsonPath)
 		// for now do not handle input and return test json result.
 		// fmt.Fprintln(w, "Thanks!")
-		transport := nutrition.Transport{
+		transport := Transport{
 			Orders:      orders,
 			Recipes:     recipes,
 			Ingredients: ingredients,
 			FoodItems:   foodItems,
+			Stats: Stats{
+				FoodItemUse:             stats.FoodItemUse(orders),
+				TotalPriceOfIngredients: stats.FoodItemsTotalValue(orders),
+			},
 		}
 
 		json.NewEncoder(w).Encode(transport)

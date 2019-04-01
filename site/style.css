@@ -45,6 +45,15 @@ nav, section {
   background-color: var(--grey-11);
 }
 
+table {
+  border-collapse: collapse;
+  font-size: 20px;
+}
+
+td { padding: 12px; }
+
+tr:nth-child(even) { background-color: var(--grey-10); }
+
 /* block */
 .content-width {
   padding: 24px 32px;

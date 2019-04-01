@@ -1,15 +1,6 @@
 // ingests nutrient plans
 package nutrition
 
-// this struct houses the other types to pass to the web view
-// better name + abstraction?
-type Transport struct {
-	Orders      []Order
-	Recipes     []Recipe
-	Ingredients []Ingredient
-	FoodItems   []FoodItem
-}
-
 type Order struct {
 	Name    string
 	Recipes []Recipe

@@ -42,8 +42,8 @@ func PrintOrdersNutrition(orders []nutrition.Order) {
 
 	var weight float32 = 88 // my weight in kg
 
-	var fat float32 = 95
-	var carbs float32 = 200
+	var fat float32 = 80
+	var carbs float32 = 140
 	var protein float32 = weight * 1.6
 
 	targetNutrition := nutrition.Nutrition{

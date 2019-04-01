@@ -69,6 +69,13 @@ header .content-width div {
   border-radius: 4px;
 }
 
+header .content-width div span {
+  padding: 4px 0;
+}
+
+header .content-width div a {
+}
+
 header .content-width div:last-child { margin-right: 0; }
 
 table {
@@ -102,14 +109,22 @@ tr:nth-child(even) { background-color: var(--grey-10); }
   border-radius: 4px;
 }
 
+.view {
+  margin-top: 8px;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 700;
+  width: 4.1rem;
+}
+
 .label {
   font-size: 20px;
   font-variant: small-caps;
-  color: var(--primary-8);
+  font-weight: 700;
+  color: var(--primary-9);
 }
 
 .info {
   font-size: 48px;
   letter-spacing: 2px;
-  color: var(--primary-10);
 }

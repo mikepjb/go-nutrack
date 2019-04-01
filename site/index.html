@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+  </head>
+  <body>
+    <nav>Nutrack</nav>
+
+
+  </body>
+  <script>
+    var nutrientJSON
+
+    function loadNutritionJSON() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "calculate", true);
+      xhr.onload = function() {
+        console.log("loading nutrient json");
+        nutrientJSON = JSON.parse(this.responseText);
+      }
+      xhr.send();
+    }
+
+    loadNutritionJSON()
+  </script>
+</html>

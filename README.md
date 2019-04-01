@@ -8,6 +8,10 @@ need to buy.
 
 ### Try it out
 
+Web (bare, only has a js var to play with):  
+`go run main.go web` then visit `127.0.0.1:8080`
+
+Command Line Interface (more complete):  
 `go run main.go src/ref/test-plan.json`
 
 ### TODO

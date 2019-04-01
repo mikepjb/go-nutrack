@@ -1,5 +1,6 @@
 :root {
   --primary-1: hsl(125, 86%, 14%);
+  --primary-1-semi: hsla(125, 86%, 14%, .4);
   --primary-1-trans: hsla(125, 86%, 14%, .15);
   --primary-2: hsl(125, 73%, 20%);
   --primary-3: hsl(125, 56%, 29%);
@@ -110,11 +111,22 @@ tr:nth-child(even) { background-color: var(--grey-10); }
 }
 
 .view {
+  background-color: var(--primary-1-semi);
   margin-top: 8px;
+  padding: 4px;
+  padding-left: 8px;
   display: inline-flex;
+  align-items: center;
+  border-radius: 20px;
   font-size: 14px;
   font-weight: 700;
-  width: 4.1rem;
+  width: 6rem;
+}
+
+.icon-cheveron-right-circle {
+  position: relative;
+  left: 6px;
+  width: 24px;
 }
 
 .label {
@@ -128,3 +140,6 @@ tr:nth-child(even) { background-color: var(--grey-10); }
   font-size: 48px;
   letter-spacing: 2px;
 }
+
+.primary { fill: var(--primary-2); }
+.secondary { fill: var(--primary-9); }

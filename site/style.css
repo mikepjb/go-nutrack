@@ -41,22 +41,31 @@ body {
 
 nav, header, section {
   display: flex;
-  flex-direction: column;
   padding: 24px 32px;
   font-size: 24px;
   background-color: var(--grey-11);
 }
 
-header {
-  flex-direction: row;
+nav {
+  justify-content: space-between;
+  align-items: center;
 }
 
-header div {
-  display: flex;
+header {
+  background-color: var(--primary-4);
+  color: var(--grey-11);
+}
+
+section {
+  flex-direction: column;
+}
+
+header .content-width div {
+  display: inline-flex;
   flex-direction: column;
   padding: 32px;
   margin: 12px;
-  width: 512px;
+  width: 256px;
   border-radius: 4px;
   border: 1px solid var(--grey-8);
 }
@@ -82,4 +91,12 @@ tr:nth-child(even) { background-color: var(--grey-10); }
     padding: 24px 150px;
     max-width: 1200px;
   }
+}
+
+/* element */
+.btn {
+  padding: 8px;
+  background-color: var(--primary-4);
+  color: var(--primary-10);
+  border-radius: 4px;
 }

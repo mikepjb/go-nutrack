@@ -4,39 +4,40 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
   </head>
   <body>
-    <div class="content-width">
-      <nav>Nutrack</nav>
+    <nav>Nutrack <a class="btn">New</a></nav>
 
       <header>
-        <div>
-          <span>Spend</span>
-          <span id="spend-total"></span>
-        </div>
+        <div class="content-width">
+          <div>
+            <span>Spend</span>
+            <span id="spend-total"></span>
+          </div>
 
-        <div>
-          <span>Nutrition</span>
-          <span id="nutrition-total"></span>
-        </div>
+          <div>
+            <span>Nutrition</span>
+            <span id="nutrition-total"></span>
+          </div>
 
-        <div>
-          <span>Totals</span>
-          <span id="totals-chart">totals for pcfs & vitamins etc</span>
+          <div>
+            <span>Totals</span>
+            <span id="totals-chart">totals for pcfs & vitamins etc</span>
+          </div>
         </div>
       </header>
 
-      <section id="foodItems">
-        <h4>Food Items</h4>
-      </section>
+      <div class="content-width">
+        <section id="foodItems">
+          <h4>Food Items</h4>
+        </section>
 
-      <section id="orders">
-        <h4>Orders</h4>
-      </section>
+        <section id="orders">
+          <h4>Orders</h4>
+        </section>
 
-      <section id="recipes">
-        <h4>Recipes</h4>
-      </section>
-
-    </div>
+        <section id="recipes">
+          <h4>Recipes</h4>
+        </section>
+      </div>
   </body>
   <script>
     var nutrientJSON

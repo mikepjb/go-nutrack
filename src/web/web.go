@@ -15,6 +15,10 @@ import (
 type Stats struct {
 	FoodItemUse             []stats.IngredientStat
 	TotalPriceOfIngredients float32
+	WeeklyNutrition         nutrition.Nutrition
+	DailyNutrition          nutrition.Nutrition
+	MacroRatio              string
+	TargetDailyNutrition    nutrition.Nutrition
 }
 
 // this struct houses the other types to pass to the web view
@@ -36,6 +40,7 @@ func routes() *http.ServeMux {
 	mux.HandleFunc("/calculate", func(w http.ResponseWriter, r *http.Request) {
 		// if r.Method == "POST" {
 		jsonPath := "src/ref/test-plan.json"
+		var weight float32 = 88
 		orders, recipes, ingredients, foodItems := ref.ReadFile(jsonPath)
 		// for now do not handle input and return test json result.
 		// fmt.Fprintln(w, "Thanks!")
@@ -47,6 +52,10 @@ func routes() *http.ServeMux {
 			Stats: Stats{
 				FoodItemUse:             stats.FoodItemUse(orders),
 				TotalPriceOfIngredients: stats.FoodItemsTotalValue(orders),
+				WeeklyNutrition:         stats.WeeklyNutrition(orders),
+				DailyNutrition:          stats.DailyNutrition(orders),
+				TargetDailyNutrition:    stats.TargetDailyNutrition(weight),
+				MacroRatio:              stats.MacroRatio(stats.WeeklyNutrition(orders)),
 			},
 		}
 

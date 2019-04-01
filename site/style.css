@@ -39,10 +39,26 @@ body {
   background-color: var(--grey-10);
 }
 
-nav, section {
+nav, header, section {
+  display: flex;
+  flex-direction: column;
   padding: 24px 32px;
   font-size: 24px;
   background-color: var(--grey-11);
+}
+
+header {
+  flex-direction: row;
+}
+
+header div {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  margin: 12px;
+  width: 512px;
+  border-radius: 4px;
+  border: 1px solid var(--grey-8);
 }
 
 table {

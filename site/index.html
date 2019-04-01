@@ -7,6 +7,23 @@
     <div class="content-width">
       <nav>Nutrack</nav>
 
+      <header>
+        <div>
+          <span>Spend</span>
+          <span id="spend-total"></span>
+        </div>
+
+        <div>
+          <span>Nutrition</span>
+          <span id="nutrition-total"></span>
+        </div>
+
+        <div>
+          <span>Totals</span>
+          <span id="totals-chart">totals for pcfs & vitamins etc</span>
+        </div>
+      </header>
+
       <section id="foodItems">
         <h4>Food Items</h4>
       </section>
@@ -118,6 +135,10 @@
       })
     }
 
+    function update(id, value) {
+      document.getElementById(id).innerHTML = value
+    }
+
     function loadNutritionJSON() {
       var xhr = new XMLHttpRequest();
       xhr.open("GET", "calculate", true);
@@ -129,6 +150,10 @@
           nutrientJSON.Stats.TotalPriceOfIngredients)
         drawOrders(nutrientJSON.Orders)
         drawRecipes(nutrientJSON.Recipes)
+        update("spend-total",
+          "£"+nutrientJSON.Stats.TotalPriceOfIngredients.toFixed(2))
+        update("nutrition-total",
+          nutrientJSON.Stats.DailyNutrition.Energy.toFixed(0)+" / "+nutrientJSON.Stats.TargetDailyNutrition.Energy.toFixed(0))
       }
       xhr.send();
     }

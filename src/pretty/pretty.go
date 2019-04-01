@@ -7,6 +7,7 @@ import (
 	"text/tabwriter"
 
 	"github.com/mikepjb/nutrition/src/nutrition"
+	"github.com/mikepjb/nutrition/src/stats"
 )
 
 func PrintOrders(orders []nutrition.Order) {
@@ -26,47 +27,21 @@ func PrintOrders(orders []nutrition.Order) {
 }
 
 func PrintOrdersNutrition(orders []nutrition.Order) {
-	weeklyNutrition := orders[0].Nutrition()
+	weeklyNutrition := stats.WeeklyNutrition(orders)
+	dailyNutrition := stats.DailyNutrition(orders)
+
 	fmt.Printf("Total Weekly Nutrition: %+v\n", weeklyNutrition)
-
-	dailyNutrition := nutrition.Nutrition{
-		Energy:  weeklyNutrition.Energy / 7,
-		Fat:     weeklyNutrition.Fat / 7,
-		Sfat:    weeklyNutrition.Sfat / 7,
-		Carbs:   weeklyNutrition.Carbs / 7,
-		Sugars:  weeklyNutrition.Sugars / 7,
-		Protein: weeklyNutrition.Protein / 7,
-	}
-
 	fmt.Printf("Average Daily Nutrition: %+v\n", dailyNutrition)
 
 	var weight float32 = 88 // my weight in kg
 
-	var fat float32 = 80
-	var carbs float32 = 140
-	var protein float32 = weight * 1.6
-
-	targetNutrition := nutrition.Nutrition{
-		Energy:  (fat * 9) + (carbs * 4) + (protein * 4),
-		Fat:     fat,
-		Sfat:    20,
-		Carbs:   carbs,
-		Sugars:  20,
-		Protein: protein,
-	}
+	targetNutrition := stats.TargetDailyNutrition(weight)
 
 	fmt.Printf("Target Daily Nutrition: %+v\n", targetNutrition)
 
 	fmt.Println("Vitamins and Minerals?")
 
-	var sum float32 = fat + carbs + protein
-
-	fmt.Printf(
-		"Fat/Carb/Protein Ratio: %.2f : %.2f : %.2f\n\n",
-		fat/sum,
-		carbs/sum,
-		protein/sum,
-	)
+	fmt.Printf("Fat/Carb/Protein Ratio: %v\n\n", stats.MacroRatio(weeklyNutrition))
 }
 
 func PrintRecipes(recipes []nutrition.Recipe) {

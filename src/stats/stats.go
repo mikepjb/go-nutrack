@@ -1,6 +1,7 @@
 package stats
 
 import (
+	"fmt"
 	"sort"
 
 	"github.com/mikepjb/nutrition/src/nutrition"
@@ -58,4 +59,46 @@ func FoodItemsTotalValue(orders []nutrition.Order) float32 {
 	}
 
 	return totalValue
+}
+
+func WeeklyNutrition(orders []nutrition.Order) nutrition.Nutrition {
+	return orders[0].Nutrition()
+}
+
+func DailyNutrition(orders []nutrition.Order) nutrition.Nutrition {
+	weeklyNutrition := WeeklyNutrition(orders)
+
+	return nutrition.Nutrition{
+		Energy:  weeklyNutrition.Energy / 7,
+		Fat:     weeklyNutrition.Fat / 7,
+		Sfat:    weeklyNutrition.Sfat / 7,
+		Carbs:   weeklyNutrition.Carbs / 7,
+		Sugars:  weeklyNutrition.Sugars / 7,
+		Protein: weeklyNutrition.Protein / 7,
+	}
+}
+
+func TargetDailyNutrition(weight float32) nutrition.Nutrition {
+	var fat float32 = 80
+	var carbs float32 = 140
+	var protein float32 = weight * 1.6
+
+	return nutrition.Nutrition{
+		Energy:  (fat * 9) + (carbs * 4) + (protein * 4),
+		Fat:     fat,
+		Sfat:    20,
+		Carbs:   carbs,
+		Sugars:  20,
+		Protein: protein,
+	}
+}
+
+func MacroRatio(n nutrition.Nutrition) string {
+	total := n.Protein + n.Carbs + n.Fat
+	return fmt.Sprintf(
+		"%.2f : %.2f : %.2f",
+		n.Fat/total,
+		n.Carbs/total,
+		n.Protein/total,
+	)
 }

@@ -63,7 +63,7 @@
     },
     {
       "name": "special fried rice",
-      "ingredients": ["chicken"]
+      "ingredients": ["chicken", "rice"]
     },
     {
       "name": "scrambled eggs",
@@ -120,6 +120,10 @@
       "amount": 125
     },
     {
+      "name": "rice",
+      "amount": 125
+    },
+    {
       "name": "egg",
       "amount": 50
     },
@@ -144,6 +148,18 @@
       "carbs": 65,
       "sugars": 0.8,
       "protein": 12
+    },
+    {
+      "name": "rice",
+      "desc": "Tesco Easy Cook Brown Rice",
+      "amount": 1000,
+      "price": 1.50,
+      "energy": 356,
+      "fat": 2.8,
+      "sfat": 0.6,
+      "carbs": 74,
+      "sugars": 0.6,
+      "protein": 7.7
     },
     {
       "name": "egg noodles",

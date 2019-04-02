@@ -131,6 +131,7 @@ td { padding: 12px; }
   border: 1px solid var(--grey-8);
   border-radius: 8px;
   background-color: var(--grey-11);
+  background: linear-gradient(to bottom, var(--grey-11) 0,var(--grey-11) 75%,var(--grey-9) 60%,var(--grey-9) 100%);
   box-shadow: 0 4px 6px var(--grey-1-trans);
 }
 
@@ -169,6 +170,22 @@ td { padding: 12px; }
 }
 
 #menu-section div:last-child { margin-right: 0 }
+
+#menu-section .view-recipe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--grey-3);
+  margin-top: 32px;
+  margin-bottom: -4px;
+}
+
+.view-recipe svg {
+  width: 32px;
+}
+
+.view-recipe .secondary { fill: var(--grey-6); }
 
 /* element */
 .btn {

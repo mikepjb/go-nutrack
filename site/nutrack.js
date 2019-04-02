@@ -2,46 +2,29 @@
 
 var nutrientJSON
 
+function tableData(text) {
+  var td = document.createElement("td")
+  var text = document.createTextNode(text)
+  td.appendChild(text)
+  return td
+}
+
 function drawFoodItems(foodItemsUsed, total) {
   var tbody = document.getElementById("foodItems")
 
   foodItemsUsed.forEach(function(fi) {
     var tr = document.createElement("tr")
 
-    var td = document.createElement("td")
-    var text = document.createTextNode(fi.Name)
-    td.appendChild(text)
-    tr.appendChild(td)
-
-    var td = document.createElement("td")
-    var text = document.createTextNode(fi.Amount + "g")
-    td.appendChild(text)
-    tr.appendChild(td)
-
-    var td = document.createElement("td")
-    var text = document.createTextNode("£" + fi.Price.toFixed(2))
-    td.appendChild(text)
-    tr.appendChild(td)
+    tr.appendChild(tableData(fi.Name))
+    tr.appendChild(tableData(fi.Amount + "g"))
+    tr.appendChild(tableData("£" + fi.Price.toFixed(2)))
 
     tbody.appendChild(tr)
   })
 
-  var tr = document.createElement("tr")
-
-  var td = document.createElement("td")
-  var text = document.createTextNode("Total")
-  td.appendChild(text)
-  tr.appendChild(td)
-
-  var td = document.createElement("td")
-  var text = document.createTextNode("--")
-  td.appendChild(text)
-  tr.appendChild(td)
-
-  var td = document.createElement("td")
-  var text = document.createTextNode("£" + total.toFixed(2))
-  td.appendChild(text)
-  tr.appendChild(td)
+  tr.appendChild(tableData("Total"))
+  tr.appendChild(tableData("--"))
+  tr.appendChild(tableData("£" + total.toFixed(2)))
   tbody.appendChild(tr)
 }
 

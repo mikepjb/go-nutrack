@@ -69,6 +69,10 @@ function todaysMenu(orders) {
     div.classList.add("view-recipe")
     rdiv.appendChild(div)
 
+    rdiv.onclick = function() {
+      drawRecipe(r)
+    }
+
     menuSection.appendChild(rdiv)
   })
 }
@@ -99,23 +103,6 @@ function drawFoodItems(foodItemsUsed, total) {
   tbody.appendChild(tr)
 }
 
-function drawOrders(orders) {
-  orders.forEach(function(o) {
-    var e = document.createElement("h5")
-    var text = document.createTextNode(o.Name.capitalize())
-    e.appendChild(text)
-    var odiv = document.getElementById("orders")
-    odiv.appendChild(e)
-
-    o.Recipes.forEach(function(r) {
-      var e = document.createElement("div")
-      var text = document.createTextNode(r.Name.capitalize())
-      e.appendChild(text)
-      odiv.appendChild(e)
-    })
-  })
-}
-
 function drawRecipes(recipes) {
   var tbody = document.getElementById("recipes")
 
@@ -132,6 +119,38 @@ function drawRecipes(recipes) {
   })
 }
 
+// bad name given to the default screen
+function drawMain(nutrientJSON) {
+  drawFoodItems(nutrientJSON.Stats.FoodItemUse,
+    nutrientJSON.Stats.TotalPriceOfIngredients)
+  drawRecipes(nutrientJSON.Recipes)
+  update("spend-total",
+    "£"+nutrientJSON.Stats.TotalPriceOfIngredients.toFixed(2))
+  update("nutrition-total",
+    nutrientJSON.Stats.DailyNutrition.Energy.toFixed(0)+" / "+nutrientJSON.Stats.TargetDailyNutrition.Energy.toFixed(0))
+  todaysMenu(nutrientJSON.Orders)
+}
+
+function drawRecipe(recipe) {
+  mainArea = document.getElementById("mainArea")
+  drawArea = document.getElementById("drawArea")
+  mainArea.style.display = "none"
+  drawArea.style.display = "block"
+  drawArea.innerHTML = "";
+
+  var link = document.createElement("a")
+  var text = document.createTextNode("Back to main")
+  link.appendChild(text)
+  link.onclick = function() {
+    // drawMain(nutrientJSON);
+    mainArea.style.display = "block"
+    drawArea.style.display = "none"
+  }
+  drawArea.appendChild(link)
+  // var div = document.createElement("div")
+  // var text = document.createTextNode(r.Name.capitalize())
+}
+
 function update(id, value) {
   document.getElementById(id).innerHTML = value
 }
@@ -142,16 +161,7 @@ function loadNutritionJSON() {
   xhr.onload = function() {
     console.log("loading nutrient json");
     nutrientJSON = JSON.parse(this.responseText);
-
-    drawFoodItems(nutrientJSON.Stats.FoodItemUse,
-      nutrientJSON.Stats.TotalPriceOfIngredients)
-    drawOrders(nutrientJSON.Orders)
-    drawRecipes(nutrientJSON.Recipes)
-    update("spend-total",
-      "£"+nutrientJSON.Stats.TotalPriceOfIngredients.toFixed(2))
-    update("nutrition-total",
-      nutrientJSON.Stats.DailyNutrition.Energy.toFixed(0)+" / "+nutrientJSON.Stats.TargetDailyNutrition.Energy.toFixed(0))
-    todaysMenu(nutrientJSON.Orders)
+    drawMain(nutrientJSON)
   }
   xhr.send();
 }

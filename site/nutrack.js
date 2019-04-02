@@ -2,6 +2,12 @@
 
 var nutrientJSON
 
+String.prototype.capitalize = function() {
+  return this.replace(/\w\S*/g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+
 function tableData(text) {
   var td = document.createElement("td")
   var text = document.createTextNode(text)
@@ -19,7 +25,7 @@ function todaysMenu(orders) {
     var rdiv = document.createElement("div")
 
     var span = document.createElement("span")
-    var text = document.createTextNode(r.Name)
+    var text = document.createTextNode(r.Name.capitalize())
     span.appendChild(text)
     rdiv.appendChild(span)
 
@@ -33,7 +39,7 @@ function drawFoodItems(foodItemsUsed, total) {
   foodItemsUsed.forEach(function(fi) {
     var tr = document.createElement("tr")
 
-    tr.appendChild(tableData(fi.Name))
+    tr.appendChild(tableData(fi.Name.capitalize()))
     tr.appendChild(tableData(fi.Protein+"g"))
     tr.appendChild(tableData(fi.Carbs+"g"))
     tr.appendChild(tableData(fi.Fat+"g"))
@@ -56,14 +62,14 @@ function drawFoodItems(foodItemsUsed, total) {
 function drawOrders(orders) {
   orders.forEach(function(o) {
     var e = document.createElement("h5")
-    var text = document.createTextNode(o.Name)
+    var text = document.createTextNode(o.Name.capitalize())
     e.appendChild(text)
     var odiv = document.getElementById("orders")
     odiv.appendChild(e)
 
     o.Recipes.forEach(function(r) {
       var e = document.createElement("div")
-      var text = document.createTextNode(r.Name)
+      var text = document.createTextNode(r.Name.capitalize())
       e.appendChild(text)
       odiv.appendChild(e)
     })
@@ -76,7 +82,7 @@ function drawRecipes(recipes) {
   recipes.forEach(function(r) {
     var tr = document.createElement("tr")
 
-    tr.appendChild(tableData(r.Name))
+    tr.appendChild(tableData(r.Name.capitalize()))
     tr.appendChild(tableData(r.Nutrition.Protein.toFixed(2)+"g"))
     tr.appendChild(tableData(r.Nutrition.Carbs.toFixed(2)+"g"))
     tr.appendChild(tableData(r.Nutrition.Fat.toFixed(2)+"g"))

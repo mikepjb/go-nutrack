@@ -23,11 +23,21 @@ func routes() *http.ServeMux {
 		jsonPath := "src/ref/test-plan.json"
 		var weight float32 = 88
 		orders, recipes, ingredients, foodItems := ref.ReadFile(jsonPath)
+
+		transportRecipes := []transport.Recipe{}
+
+		for _, r := range recipes {
+			transportRecipes = append(transportRecipes, transport.Recipe{
+				r,
+				r.Nutrition(),
+				r.Price(),
+			})
+		}
 		// for now do not handle input and return test json result.
 		// fmt.Fprintln(w, "Thanks!")
 		transport := transport.Transport{
 			Orders:      orders,
-			Recipes:     recipes,
+			Recipes:     transportRecipes,
 			Ingredients: ingredients,
 			FoodItems:   foodItems,
 			Stats: transport.Stats{

@@ -71,12 +71,18 @@ function drawOrders(orders) {
 }
 
 function drawRecipes(recipes) {
+  var tbody = document.getElementById("recipes")
+
   recipes.forEach(function(r) {
-    var e = document.createElement("div")
-    var text = document.createTextNode(r.Name)
-    e.appendChild(text)
-    var rdiv = document.getElementById("recipes")
-    rdiv.appendChild(e)
+    var tr = document.createElement("tr")
+
+    tr.appendChild(tableData(r.Name))
+    tr.appendChild(tableData(r.Nutrition.Protein.toFixed(2)+"g"))
+    tr.appendChild(tableData(r.Nutrition.Carbs.toFixed(2)+"g"))
+    tr.appendChild(tableData(r.Nutrition.Fat.toFixed(2)+"g"))
+    tr.appendChild(tableData("£" + r.Price.toFixed(2)))
+
+    tbody.appendChild(tr)
   })
 }
 

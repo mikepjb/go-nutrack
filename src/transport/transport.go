@@ -21,14 +21,15 @@ type Stats struct {
 // better name + abstraction?
 type Transport struct {
 	Orders      []nutrition.Order
-	Recipes     []nutrition.Recipe // will become transport.Recipe
+	Recipes     []Recipe
 	Ingredients []nutrition.Ingredient
 	FoodItems   []nutrition.FoodItem
 	Stats       Stats
 }
 
 // Started implementing Recipe for JSON
-// type Recipe struct {
-// 	nutrition.Recipe
-// 	Nutrition nutrition.Nutrition
-// }
+type Recipe struct {
+	nutrition.Recipe
+	Nutrition nutrition.Nutrition
+	Price     float32
+}

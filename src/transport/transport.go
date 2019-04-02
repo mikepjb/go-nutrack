@@ -1,5 +1,5 @@
 // takes go structs and embeds function results in them for JSON transport
-// e.g calculates the price of a recipe and include it as a RecipeTransport
+// e.g calculates the price of a recipe and include it as a transport.Recipe
 // type.
 package transport
 
@@ -21,8 +21,14 @@ type Stats struct {
 // better name + abstraction?
 type Transport struct {
 	Orders      []nutrition.Order
-	Recipes     []nutrition.Recipe
+	Recipes     []nutrition.Recipe // will become transport.Recipe
 	Ingredients []nutrition.Ingredient
 	FoodItems   []nutrition.FoodItem
 	Stats       Stats
 }
+
+// Started implementing Recipe for JSON
+// type Recipe struct {
+// 	nutrition.Recipe
+// 	Nutrition nutrition.Nutrition
+// }

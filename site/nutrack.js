@@ -34,9 +34,9 @@ function drawFoodItems(foodItemsUsed, total) {
     var tr = document.createElement("tr")
 
     tr.appendChild(tableData(fi.Name))
-    tr.appendChild(tableData(fi.Protein))
-    tr.appendChild(tableData(fi.Carbs))
-    tr.appendChild(tableData(fi.Fat))
+    tr.appendChild(tableData(fi.Protein+"g"))
+    tr.appendChild(tableData(fi.Carbs+"g"))
+    tr.appendChild(tableData(fi.Fat+"g"))
     tr.appendChild(tableData(fi.Amount + "g"))
     tr.appendChild(tableData("£" + fi.Price.toFixed(2)))
 

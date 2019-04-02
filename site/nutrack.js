@@ -9,6 +9,24 @@ function tableData(text) {
   return td
 }
 
+// no apostrophe :(
+// also, seperate orders for each day is a better use of this model.
+function todaysMenu(orders) {
+  var dayOfWeek = new Date().getDay()
+  var menu = orders[0].Recipes.slice(dayOfWeek*3, (dayOfWeek*3)+3)
+  var menuSection = document.getElementById("menu-section")
+  menu.forEach(function(r) {
+    var rdiv = document.createElement("div")
+
+    var span = document.createElement("span")
+    var text = document.createTextNode(r.Name)
+    span.appendChild(text)
+    rdiv.appendChild(span)
+
+    menuSection.appendChild(rdiv)
+  })
+}
+
 function drawFoodItems(foodItemsUsed, total) {
   var tbody = document.getElementById("foodItems")
 
@@ -16,6 +34,9 @@ function drawFoodItems(foodItemsUsed, total) {
     var tr = document.createElement("tr")
 
     tr.appendChild(tableData(fi.Name))
+    tr.appendChild(tableData(fi.Protein))
+    tr.appendChild(tableData(fi.Carbs))
+    tr.appendChild(tableData(fi.Fat))
     tr.appendChild(tableData(fi.Amount + "g"))
     tr.appendChild(tableData("£" + fi.Price.toFixed(2)))
 
@@ -24,6 +45,9 @@ function drawFoodItems(foodItemsUsed, total) {
 
   var tr = document.createElement("tr")
   tr.appendChild(tableData("Total"))
+  tr.appendChild(tableData("--"))
+  tr.appendChild(tableData("--"))
+  tr.appendChild(tableData("--"))
   tr.appendChild(tableData("--"))
   tr.appendChild(tableData("£" + total.toFixed(2)))
   tbody.appendChild(tr)
@@ -75,6 +99,7 @@ function loadNutritionJSON() {
       "£"+nutrientJSON.Stats.TotalPriceOfIngredients.toFixed(2))
     update("nutrition-total",
       nutrientJSON.Stats.DailyNutrition.Energy.toFixed(0)+" / "+nutrientJSON.Stats.TargetDailyNutrition.Energy.toFixed(0))
+    todaysMenu(nutrientJSON.Orders)
   }
   xhr.send();
 }

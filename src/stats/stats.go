@@ -12,6 +12,9 @@ type IngredientStat struct {
 	FoodItem nutrition.FoodItem
 	Amount   float32
 	Price    float32
+	Protein  float32
+	Carbs    float32
+	Fat      float32
 }
 
 // return food items in the amount they were used for the order.
@@ -38,6 +41,9 @@ func FoodItemUse(orders []nutrition.Order) []IngredientStat {
 			Name:     fi.Name,
 			FoodItem: fi,
 			Amount:   a,
+			Protein:  fi.Protein,
+			Carbs:    fi.Carbs,
+			Fat:      fi.Fat,
 			Price:    in.Price(),
 		}
 		ingredientStats = append(ingredientStats, ins)

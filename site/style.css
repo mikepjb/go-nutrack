@@ -102,6 +102,20 @@ tr:nth-child(even) { background-color: var(--grey-10); }
   }
 }
 
+#menu-section {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+#menu-section div {
+  padding: 12px;
+  margin-right: 32px;
+  border: 1px solid var(--grey-8);
+  border-radius: 4px;
+}
+
+#menu-section div:last-child { margin-right: 0 }
+
 /* element */
 .btn {
   padding: 8px;

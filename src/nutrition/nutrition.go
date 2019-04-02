@@ -1,6 +1,8 @@
 // ingests nutrient plans
 package nutrition
 
+import "fmt"
+
 type Order struct {
 	Name    string
 	Recipes []Recipe
@@ -78,6 +80,16 @@ func (i Ingredient) Nutrition() Nutrition {
 		Sugars:  i.FoodItem.Sugars * i.NutritionRatio(),
 		Protein: i.FoodItem.Protein * i.NutritionRatio(),
 	}
+}
+
+func (n Nutrition) RatioString() string {
+	total := n.Protein + n.Carbs + n.Fat
+	return fmt.Sprintf(
+		"%.1f / %.1f / %.1f",
+		((n.Protein / total) * 100),
+		((n.Carbs / total) * 100),
+		((n.Fat / total) * 100),
+	)
 }
 
 func (r Recipe) Price() float32 {

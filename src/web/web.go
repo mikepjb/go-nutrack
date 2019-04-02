@@ -31,12 +31,32 @@ func routes() *http.ServeMux {
 				r,
 				r.Nutrition(),
 				r.Price(),
+				r.Nutrition().RatioString(),
 			})
 		}
+
+		transportOrders := []transport.Order{}
+
+		for _, o := range orders {
+			recipes := []transport.Recipe{}
+			for _, r := range o.Recipes {
+				recipes = append(recipes, transport.Recipe{
+					r,
+					r.Nutrition(),
+					r.Price(),
+					r.Nutrition().RatioString(),
+				})
+			}
+			transportOrders = append(transportOrders, transport.Order{
+				o.Name,
+				recipes,
+			})
+		}
+
 		// for now do not handle input and return test json result.
 		// fmt.Fprintln(w, "Thanks!")
 		transport := transport.Transport{
-			Orders:      orders,
+			Orders:      transportOrders,
 			Recipes:     transportRecipes,
 			Ingredients: ingredients,
 			FoodItems:   foodItems,

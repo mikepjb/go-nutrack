@@ -20,16 +20,22 @@ type Stats struct {
 // this struct houses the other types to pass to the web view
 // better name + abstraction?
 type Transport struct {
-	Orders      []nutrition.Order
+	Orders      []Order
 	Recipes     []Recipe
 	Ingredients []nutrition.Ingredient
 	FoodItems   []nutrition.FoodItem
 	Stats       Stats
 }
 
-// Started implementing Recipe for JSON
+// TODO: I think there should be an interface for these..?
 type Recipe struct {
 	nutrition.Recipe
-	Nutrition nutrition.Nutrition
-	Price     float32
+	Nutrition   nutrition.Nutrition
+	Price       float32
+	RatioString string
+}
+
+type Order struct {
+	Name    string
+	Recipes []Recipe
 }

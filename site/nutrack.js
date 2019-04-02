@@ -24,10 +24,43 @@ function todaysMenu(orders) {
   menu.forEach(function(r) {
     var rdiv = document.createElement("div")
 
-    var span = document.createElement("span")
+    var div = document.createElement("div")
     var text = document.createTextNode(r.Name.capitalize())
+    div.appendChild(text)
+    div.classList.add("name")
+    rdiv.appendChild(div)
+
+    var div = document.createElement("div")
+    var text = document.createTextNode(r.RatioString)
+    div.appendChild(text)
+    div.classList.add("ratio")
+    rdiv.appendChild(div)
+
+    var div = document.createElement("div")
+
+    var span = document.createElement("span")
+    var text = document.createTextNode("protein")
     span.appendChild(text)
-    rdiv.appendChild(span)
+    div.appendChild(span)
+
+    var span = document.createElement("span")
+    var text = document.createTextNode("carbs")
+    span.appendChild(text)
+    div.appendChild(span)
+
+    var span = document.createElement("span")
+    var text = document.createTextNode("fat")
+    span.appendChild(text)
+    div.appendChild(span)
+
+    div.classList.add("ratio-desc")
+    rdiv.appendChild(div)
+
+    var div = document.createElement("div")
+    var text = document.createTextNode(r.Nutrition.Energy.toFixed(0)+" kcal")
+    div.appendChild(text)
+    div.classList.add("energy")
+    rdiv.appendChild(div)
 
     menuSection.appendChild(rdiv)
   })

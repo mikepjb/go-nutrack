@@ -125,13 +125,47 @@ td { padding: 12px; }
   flex-direction: row;
 }
 
-#menu-section div {
-  padding: 12px;
+#menu-section > div {
+  padding: 16px;
   margin-right: 32px;
   border: 1px solid var(--grey-8);
   border-radius: 8px;
   background-color: var(--grey-11);
   box-shadow: 0 4px 6px var(--grey-1-trans);
+}
+
+#menu-section .name {
+  font-size: 18px;
+}
+
+#menu-section .ratio {
+  font-size: 32px;
+  padding: 12px 0 0 0;
+  letter-spacing: 1px;
+}
+
+#menu-section .ratio-desc {
+  font-size: 14px;
+  font-variant: small-caps;
+  padding: 0 0 12px 0;
+  letter-spacing: 1px;
+}
+
+#menu-section .ratio-desc span:first-child {
+  padding-right: 32px;
+}
+
+#menu-section .ratio-desc span {
+  padding-right: 54px;
+}
+
+#menu-section .ratio-desc span:last-child {
+  padding-right: 0;
+}
+
+#menu-section .energy {
+  font-size: 16px;
+  color: var(--grey-4);
 }
 
 #menu-section div:last-child { margin-right: 0 }

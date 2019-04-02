@@ -61,6 +61,7 @@ header {
   background-color: var(--primary-4);
   background-image: linear-gradient(to bottom right, var(--primary-4), var(--primary-7));
   color: var(--grey-11);
+  box-shadow: 0 4px 6px var(--grey-1-trans);
 }
 
 section {
@@ -89,6 +90,7 @@ table {
   font-size: 20px;
   border: 1px solid var(--grey-8);
   border-radius: 8px;
+  box-shadow: 0 4px 6px var(--grey-1-trans);
 }
 
 tr { background-color: var(--grey-11); }
@@ -129,6 +131,7 @@ td { padding: 12px; }
   border: 1px solid var(--grey-8);
   border-radius: 8px;
   background-color: var(--grey-11);
+  box-shadow: 0 4px 6px var(--grey-1-trans);
 }
 
 #menu-section div:last-child { margin-right: 0 }
@@ -140,6 +143,7 @@ td { padding: 12px; }
   color: var(--primary-10);
   border-radius: 4px;
   text-decoration: none;
+  box-shadow: 0 4px 6px var(--grey-1-trans);
 }
 
 .view {

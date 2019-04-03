@@ -145,10 +145,13 @@ function drawRecipe(recipe) {
     // drawMain(nutrientJSON);
     mainArea.style.display = "block"
     drawArea.style.display = "none"
+    window.location.hash = ""
   }
   drawArea.appendChild(link)
   // var div = document.createElement("div")
   // var text = document.createTextNode(r.Name.capitalize())
+
+  window.location.hash = "#recipe:" + recipe.Name
 }
 
 function update(id, value) {

@@ -15,6 +15,17 @@ function tableData(text) {
   return td
 }
 
+// remove f when no div vars exist
+function element(eName, text, className) {
+  var e = document.createElement(eName)
+  var content = document.createTextNode(text)
+  e.appendChild(content)
+  if (typeof className !== 'undefined') {
+    e.classList.add(className)
+  }
+  return e
+}
+
 // no apostrophe :(
 // also, seperate orders for each day is a better use of this model.
 function todaysMenu(orders) {
@@ -24,54 +35,28 @@ function todaysMenu(orders) {
   menu.forEach(function(r) {
     var rdiv = document.createElement("div")
 
-    var div = document.createElement("div")
-    var text = document.createTextNode(r.Name.capitalize())
-    div.appendChild(text)
-    div.classList.add("name")
-    rdiv.appendChild(div)
-
-    var div = document.createElement("div")
-    var text = document.createTextNode(r.RatioString)
-    div.appendChild(text)
-    div.classList.add("ratio")
-    rdiv.appendChild(div)
+    rdiv.appendChild(element("div", r.Name.capitalize(), "name"))
+    rdiv.appendChild(element("div", r.RatioString, "ratio"))
 
     var div = document.createElement("div")
 
-    var span = document.createElement("span")
-    var text = document.createTextNode("protein")
-    span.appendChild(text)
-    div.appendChild(span)
-
-    var span = document.createElement("span")
-    var text = document.createTextNode("carbs")
-    span.appendChild(text)
-    div.appendChild(span)
-
-    var span = document.createElement("span")
-    var text = document.createTextNode("fat")
-    span.appendChild(text)
-    div.appendChild(span)
+    div.appendChild(element("span", "protein"))
+    div.appendChild(element("span", "carbs"))
+    div.appendChild(element("span", "fat"))
 
     div.classList.add("ratio-desc")
     rdiv.appendChild(div)
 
-    var div = document.createElement("div")
-    var text = document.createTextNode(r.Nutrition.Energy.toFixed(0)+" kcal")
-    div.appendChild(text)
-    div.classList.add("energy")
-    rdiv.appendChild(div)
+    rdiv.appendChild(
+      element("div", r.Nutrition.Energy.toFixed(0)+" kcal", "energy")
+    )
 
     var div = document.createElement("div")
-    // var text = document.createTextNode("View Recipe")
     div.innerHTML = "View Recipe <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' class='icon-cheveron-right'><path class='secondary' d='M10.3 8.7a1 1 0 0 1 1.4-1.4l4 4a1 1 0 0 1 0 1.4l-4 4a1 1 0 0 1-1.4-1.4l3.29-3.3-3.3-3.3z'/></svg>"
-    // div.appendChild(text)
     div.classList.add("view-recipe")
     rdiv.appendChild(div)
 
-    rdiv.onclick = function() {
-      drawRecipe(r)
-    }
+    rdiv.onclick = function() { drawRecipe(r); }
 
     menuSection.appendChild(rdiv)
   })
@@ -147,16 +132,10 @@ function drawRecipe(recipe) {
     drawArea.style.display = "none"
     window.location.hash = ""
   }
-  drawArea.appendChild(link)
-  var h4 = document.createElement("h4")
-  var text = document.createTextNode(recipe.Name.capitalize())
-  h4.appendChild(text)
-  drawArea.appendChild(h4)
 
-  var h4 = document.createElement("h4")
-  var text = document.createTextNode("Ingredients")
-  h4.appendChild(text)
-  drawArea.appendChild(h4)
+  drawArea.appendChild(link)
+  drawArea.appendChild(element("h4", recipe.Name.capitalize()))
+  drawArea.appendChild(element("h4", "Ingredients"))
 
   recipe.Ingredients.forEach(function(i) {
     var div = document.createElement("div")

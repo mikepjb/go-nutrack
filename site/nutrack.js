@@ -180,7 +180,7 @@ function readHash(hash, nutrientJSON) {
     drawArea.style.display = "none"
 
     if (hash.includes("recipe")) {
-      var name = hash.split(":").slice(-1).pop()
+      var name = decodeURI(hash.split(":").slice(-1).pop())
       var recipe = nutrientJSON.Recipes.find(r => r.Name === name)
       drawRecipe(recipe)
     }

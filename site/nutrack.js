@@ -148,10 +148,22 @@ function drawRecipe(recipe) {
     window.location.hash = ""
   }
   drawArea.appendChild(link)
-  var div = document.createElement("div")
+  var h4 = document.createElement("h4")
   var text = document.createTextNode(recipe.Name.capitalize())
-  div.appendChild(text)
-  drawArea.appendChild(div)
+  h4.appendChild(text)
+  drawArea.appendChild(h4)
+
+  var h4 = document.createElement("h4")
+  var text = document.createTextNode("Ingredients")
+  h4.appendChild(text)
+  drawArea.appendChild(h4)
+
+  recipe.Ingredients.forEach(function(i) {
+    var div = document.createElement("div")
+    var text = document.createTextNode(i.Name + ": " + i.Amount + "g")
+    div.appendChild(text)
+    drawArea.appendChild(div)
+  })
 
   window.location.hash = "#recipe:" + recipe.Name
 }

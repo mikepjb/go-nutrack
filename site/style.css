@@ -230,3 +230,5 @@ td { padding: 12px; }
 
 .primary { fill: var(--primary-2); }
 .secondary { fill: var(--primary-9); }
+
+#drawArea { display: none; }

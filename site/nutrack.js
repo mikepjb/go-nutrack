@@ -148,8 +148,10 @@ function drawRecipe(recipe) {
     window.location.hash = ""
   }
   drawArea.appendChild(link)
-  // var div = document.createElement("div")
-  // var text = document.createTextNode(r.Name.capitalize())
+  var div = document.createElement("div")
+  var text = document.createTextNode(recipe.Name.capitalize())
+  div.appendChild(text)
+  drawArea.appendChild(div)
 
   window.location.hash = "#recipe:" + recipe.Name
 }
@@ -165,8 +167,24 @@ function loadNutritionJSON() {
     console.log("loading nutrient json");
     nutrientJSON = JSON.parse(this.responseText);
     drawMain(nutrientJSON)
+    readHash(window.location.hash, nutrientJSON)
   }
   xhr.send();
+}
+
+// on page load we want to display the view to the user according to the url
+// hash
+function readHash(hash, nutrientJSON) {
+  if (hash !== "") {
+    mainArea.style.display = "block"
+    drawArea.style.display = "none"
+
+    if (hash.includes("recipe")) {
+      var name = hash.split(":").slice(-1).pop()
+      var recipe = nutrientJSON.Recipes.find(r => r.Name === name)
+      drawRecipe(recipe)
+    }
+  }
 }
 
 loadNutritionJSON()

@@ -1,0 +1,7 @@
+#!/bin/bash -eu
+
+# echo '--> generating json'
+# go run generate.go
+
+aws s3 sync --acl public-read --sse --delete site s3://nutrack.michaelbruce.co
+

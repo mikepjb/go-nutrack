@@ -127,7 +127,6 @@ function drawRecipe(recipe) {
   var text = document.createTextNode("Back to main")
   link.appendChild(text)
   link.onclick = function() {
-    // drawMain(nutrientJSON);
     mainArea.style.display = "block"
     drawArea.style.display = "none"
     window.location.hash = ""

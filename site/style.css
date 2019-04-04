@@ -123,7 +123,13 @@ td { padding: 12px; }
 
 #menu-section {
   display: inline-flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+@media (min-width:800px) {
+  #menu-section {
+    flex-direction: row;
+  }
 }
 
 #menu-section > div {

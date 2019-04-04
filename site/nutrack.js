@@ -2,6 +2,7 @@
 
 var nutrientJSON
 
+/* base functions */
 String.prototype.capitalize = function() {
   return this.replace(/\w\S*/g, function(txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -26,6 +27,7 @@ function element(eName, text, className) {
   return e
 }
 
+/* view functions */
 // no apostrophe :(
 // also, seperate orders for each day is a better use of this model.
 function todaysMenu(orders) {
@@ -152,9 +154,8 @@ function update(id, value) {
 
 function loadNutritionJSON() {
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "calculate", true);
+  xhr.open("GET", "test-plan.json", true);
   xhr.onload = function() {
-    console.log("loading nutrient json");
     nutrientJSON = JSON.parse(this.responseText);
     drawMain(nutrientJSON)
     readHash(window.location.hash, nutrientJSON)
@@ -162,8 +163,7 @@ function loadNutritionJSON() {
   xhr.send();
 }
 
-// on page load we want to display the view to the user according to the url
-// hash
+/* routing */
 function readHash(hash, nutrientJSON) {
   if (hash !== "") {
     mainArea.style.display = "block"

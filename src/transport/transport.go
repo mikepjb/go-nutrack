@@ -4,7 +4,11 @@
 package transport
 
 import (
+	"encoding/json"
+	"io"
+
 	"github.com/mikepjb/nutrition/src/nutrition"
+	"github.com/mikepjb/nutrition/src/ref"
 	"github.com/mikepjb/nutrition/src/stats"
 )
 
@@ -38,4 +42,58 @@ type Recipe struct {
 type Order struct {
 	Name    string
 	Recipes []Recipe
+}
+
+func WriteTestPlan(w io.Writer) {
+	jsonPath := "src/ref/test-plan.json"
+	var weight float32 = 88
+	orders, recipes, ingredients, foodItems := ref.ReadFile(jsonPath)
+
+	transportRecipes := []Recipe{}
+
+	for _, r := range recipes {
+		transportRecipes = append(transportRecipes, Recipe{
+			r,
+			r.Nutrition(),
+			r.Price(),
+			r.Nutrition().RatioString(),
+		})
+	}
+
+	transportOrders := []Order{}
+
+	for _, o := range orders {
+		recipes := []Recipe{}
+		for _, r := range o.Recipes {
+			recipes = append(recipes, Recipe{
+				r,
+				r.Nutrition(),
+				r.Price(),
+				r.Nutrition().RatioString(),
+			})
+		}
+		transportOrders = append(transportOrders, Order{
+			o.Name,
+			recipes,
+		})
+	}
+
+	// for now do not handle input and return test json result.
+	// fmt.Fprintln(w, "Thanks!")
+	transport := Transport{
+		Orders:      transportOrders,
+		Recipes:     transportRecipes,
+		Ingredients: ingredients,
+		FoodItems:   foodItems,
+		Stats: Stats{
+			FoodItemUse:             stats.FoodItemUse(orders),
+			TotalPriceOfIngredients: stats.FoodItemsTotalValue(orders),
+			WeeklyNutrition:         stats.WeeklyNutrition(orders),
+			DailyNutrition:          stats.DailyNutrition(orders),
+			TargetDailyNutrition:    stats.TargetDailyNutrition(weight),
+			MacroRatio:              stats.MacroRatio(stats.WeeklyNutrition(orders)),
+		},
+	}
+
+	json.NewEncoder(w).Encode(transport)
 }

@@ -20,8 +20,8 @@ type IngredientStat struct {
 // return food items in the amount they were used for the order.
 func FoodItemUse(orders []nutrition.Order) []IngredientStat {
 	foodItems := map[nutrition.FoodItem]float32{}
-	ingredients := []nutrition.Ingredient{}
-	ingredientStats := []IngredientStat{}
+	var ingredients []nutrition.Ingredient
+	var ingredientStats []IngredientStat
 
 	for _, o := range orders {
 		ingredients = append(ingredients, o.Ingredients()...)
@@ -87,7 +87,7 @@ func DailyNutrition(orders []nutrition.Order) nutrition.Nutrition {
 func TargetDailyNutrition(weight float32) nutrition.Nutrition {
 	var fat float32 = 80
 	var carbs float32 = 140
-	var protein float32 = weight * 1.6
+	var protein = weight * 1.6
 
 	return nutrition.Nutrition{
 		Energy:  (fat * 9) + (carbs * 4) + (protein * 4),

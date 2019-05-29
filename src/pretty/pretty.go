@@ -77,7 +77,7 @@ func PrintFoodItemsUsed(orders []nutrition.Order) {
 	foodItems := map[nutrition.FoodItem]float32{}
 	var totalPrice float32
 
-	ingredients := []nutrition.Ingredient{}
+	var ingredients []nutrition.Ingredient
 
 	for _, o := range orders {
 		ingredients = append(ingredients, o.Ingredients()...)

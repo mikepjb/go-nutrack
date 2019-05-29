@@ -49,7 +49,7 @@ func WriteTestPlan(w io.Writer) {
 	var weight float32 = 88
 	orders, recipes, ingredients, foodItems := ref.ReadFile(jsonPath)
 
-	transportRecipes := []Recipe{}
+	var transportRecipes []Recipe
 
 	for _, r := range recipes {
 		transportRecipes = append(transportRecipes, Recipe{
@@ -60,10 +60,10 @@ func WriteTestPlan(w io.Writer) {
 		})
 	}
 
-	transportOrders := []Order{}
+	var transportOrders []Order
 
 	for _, o := range orders {
-		recipes := []Recipe{}
+		var recipes []Recipe
 		for _, r := range o.Recipes {
 			recipes = append(recipes, Recipe{
 				r,

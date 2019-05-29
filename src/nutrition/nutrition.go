@@ -86,9 +86,9 @@ func (n Nutrition) RatioString() string {
 	total := n.Protein + n.Carbs + n.Fat
 	return fmt.Sprintf(
 		"%.1f / %.1f / %.1f",
-		((n.Protein / total) * 100),
-		((n.Carbs / total) * 100),
-		((n.Fat / total) * 100),
+		(n.Protein/total)*100,
+		(n.Carbs/total)*100,
+		(n.Fat/total)*100,
 	)
 }
 
@@ -123,7 +123,7 @@ func (i Ingredient) NutritionRatio() float32 {
 }
 
 func (o Order) Ingredients() []Ingredient {
-	ingredients := []Ingredient{}
+	var ingredients []Ingredient
 	for _, r := range o.Recipes {
 		ingredients = append(ingredients, r.Ingredients...)
 	}

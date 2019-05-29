@@ -21,10 +21,15 @@ func main() {
 		web.Serve()
 	} else if os.Args[1] == "generate" {
 		fmt.Println("writing test-plan.json to site folder")
+
 		f, err := os.Create("./site/test-plan.json")
 
 		if err != nil {
-			fmt.Errorf("problem creating test-plan.json: %v\n")
+			log.Fatal("problem creating test-plan.json\n")
+		}
+
+		if err := f.Close(); err != nil {
+			log.Fatal("could not close file")
 		}
 
 		transport.WriteTestPlan(f)

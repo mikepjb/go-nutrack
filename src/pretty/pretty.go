@@ -6,8 +6,8 @@ import (
 	"os"
 	"text/tabwriter"
 
-	"github.com/mikepjb/nutrition/src/nutrition"
-	"github.com/mikepjb/nutrition/src/stats"
+	"github.com/mikepjb/nutrack/src/nutrition"
+	"github.com/mikepjb/nutrack/src/stats"
 )
 
 func PrintOrders(orders []nutrition.Order) {

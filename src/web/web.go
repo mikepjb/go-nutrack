@@ -3,10 +3,9 @@ package web
 
 import (
 	"fmt"
+	"github.com/mikepjb/nutrack/src/transport"
 	"log"
 	"net/http"
-
-	"github.com/mikepjb/nutrition/src/transport"
 )
 
 func routes() *http.ServeMux {

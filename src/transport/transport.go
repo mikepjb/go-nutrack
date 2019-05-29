@@ -7,9 +7,9 @@ import (
 	"encoding/json"
 	"io"
 
-	"github.com/mikepjb/nutrition/src/nutrition"
-	"github.com/mikepjb/nutrition/src/ref"
-	"github.com/mikepjb/nutrition/src/stats"
+	"github.com/mikepjb/nutrack/src/nutrition"
+	"github.com/mikepjb/nutrack/src/ref"
+	"github.com/mikepjb/nutrack/src/stats"
 )
 
 type Stats struct {

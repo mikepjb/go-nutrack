@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/mikepjb/nutrition/src/nutrition"
+	"github.com/mikepjb/nutrack/src/nutrition"
 )
 
 type IngredientStat struct {

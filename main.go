@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
+	"github.com/mikepjb/nutrack/src/pretty"
+	"github.com/mikepjb/nutrack/src/ref"
+	"github.com/mikepjb/nutrack/src/transport"
+	"github.com/mikepjb/nutrack/src/web"
+	"log"
 	"os"
 	"strings"
-
-	"github.com/mikepjb/nutrition/src/pretty"
-	"github.com/mikepjb/nutrition/src/ref"
-	"github.com/mikepjb/nutrition/src/transport"
-	"github.com/mikepjb/nutrition/src/web"
 )
 
 func main() {
@@ -28,7 +28,6 @@ func main() {
 		}
 
 		transport.WriteTestPlan(f)
-		f.Close()
 	} else {
 		jsonPath := strings.Join(os.Args[1:], "")
 		orders, recipes, ingredients, foodItems := ref.ReadFile(jsonPath)

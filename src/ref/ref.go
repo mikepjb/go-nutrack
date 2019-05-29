@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/mikepjb/nutrition/src/nutrition"
+	"github.com/mikepjb/nutrack/src/nutrition"
 )
 
 type OrderReference struct {

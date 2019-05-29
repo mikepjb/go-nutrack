@@ -1,3 +1,3 @@
-module github.com/mikepjb/nutrition
+module github.com/mikepjb/nutrack
 
 go 1.12
